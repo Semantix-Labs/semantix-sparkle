@@ -1,12 +1,432 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import React from 'react';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { 
+  Code, 
+  Palette, 
+  MessageSquare, 
+  Camera, 
+  Users, 
+  Search,
+  Zap,
+  Shield,
+  Target,
+  ArrowRight,
+  Mail,
+  Phone,
+  MapPin,
+  ExternalLink,
+  CheckCircle,
+  Menu,
+  X
+} from 'lucide-react';
+import SemanixLogo from '@/components/SemanixLogo';
 
 const Index = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMobileMenuOpen(false);
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-gradient-subtle">
+      {/* Navigation */}
+      <nav className="fixed top-0 w-full z-50 glass-card">
+        <div className="container-custom px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center">
+              <SemanixLogo className="h-8 w-auto" theme="dark" />
+            </div>
+            
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-8">
+              <button onClick={() => scrollToSection('about')} className="text-foreground/80 hover:text-primary transition-colors">About</button>
+              <button onClick={() => scrollToSection('services')} className="text-foreground/80 hover:text-primary transition-colors">Services</button>
+              <button onClick={() => scrollToSection('clients')} className="text-foreground/80 hover:text-primary transition-colors">Clients</button>
+              <button onClick={() => scrollToSection('contact')} className="text-foreground/80 hover:text-primary transition-colors">Contact</button>
+              <Button className="btn-primary">
+                Start Project <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </div>
+
+            {/* Mobile menu button */}
+            <div className="md:hidden">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              >
+                {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              </Button>
+            </div>
+          </div>
+
+          {/* Mobile Navigation */}
+          {isMobileMenuOpen && (
+            <div className="md:hidden border-t border-border/20 py-4">
+              <div className="flex flex-col space-y-4">
+                <button onClick={() => scrollToSection('about')} className="text-left text-foreground/80 hover:text-primary transition-colors">About</button>
+                <button onClick={() => scrollToSection('services')} className="text-left text-foreground/80 hover:text-primary transition-colors">Services</button>
+                <button onClick={() => scrollToSection('clients')} className="text-left text-foreground/80 hover:text-primary transition-colors">Clients</button>
+                <button onClick={() => scrollToSection('contact')} className="text-left text-foreground/80 hover:text-primary transition-colors">Contact</button>
+                <Button className="btn-primary w-full justify-center">
+                  Start Project <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </div>
+            </div>
+          )}
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="min-h-screen flex items-center justify-center text-center px-4 pt-16">
+        <div className="container-custom max-w-4xl animate-slide-up">
+          <Badge className="mb-6 bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 transition-colors">
+            Sri Lankan Tech Excellence
+          </Badge>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 gradient-text leading-tight">
+            Building Technology That Empowers Businesses
+          </h1>
+          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
+            We're a dynamic and forward-thinking web and software development agency committed to making technology accessible to all through exceptional client service and innovative solutions.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Button size="lg" className="btn-primary text-lg px-8 py-4">
+              Start Your Project <ArrowRight className="w-5 h-5 ml-2" />
+            </Button>
+            <Button variant="outline" size="lg" className="text-lg px-8 py-4 border-2 hover:bg-primary/5">
+              View Our Work <ExternalLink className="w-5 h-5 ml-2" />
+            </Button>
+          </div>
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div className="animate-float">
+              <div className="text-3xl font-bold text-primary">50+</div>
+              <div className="text-muted-foreground">Projects Delivered</div>
+            </div>
+            <div className="animate-float" style={{ animationDelay: '1s' }}>
+              <div className="text-3xl font-bold text-primary">416%</div>
+              <div className="text-muted-foreground">Facebook Reach Growth</div>
+            </div>
+            <div className="animate-float" style={{ animationDelay: '2s' }}>
+              <div className="text-3xl font-bold text-primary">100%</div>
+              <div className="text-muted-foreground">Client Satisfaction</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="section bg-muted/30">
+        <div className="container-custom">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="animate-slide-up">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                Making Technology <span className="gradient-text">Accessible to All</span>
+              </h2>
+              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+                Our mission is to create user-friendly tech products that empower individuals and businesses, while providing exceptional client service that stands the test of time.
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 text-primary" />
+                  <span>Dynamic and forward-thinking approach</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 text-primary" />
+                  <span>Long-term client relationships</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 text-primary" />
+                  <span>Based in Colombo, Sri Lanka</span>
+                </div>
+              </div>
+            </div>
+            <div className="glass-card p-8 rounded-2xl hover-lift">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-gradient-primary rounded-xl mx-auto mb-4 flex items-center justify-center">
+                  <Zap className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Innovation First</h3>
+                <p className="text-muted-foreground">
+                  We leverage cutting-edge technologies to deliver solutions that exceed expectations and drive real business results.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section id="services" className="section">
+        <div className="container-custom">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Our <span className="gradient-text">Services</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Comprehensive solutions to help your business thrive in the digital landscape
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                icon: Code,
+                title: "Web & Software Development",
+                description: "Custom web applications and software solutions built with modern technologies"
+              },
+              {
+                icon: Palette,
+                title: "Online Branding & Graphics",
+                description: "Complete brand identity and visual design services that make you stand out"
+              },
+              {
+                icon: MessageSquare,
+                title: "Social Media Management",
+                description: "Strategic social media campaigns that boost engagement and reach"
+              },
+              {
+                icon: Camera,
+                title: "Product Photography",
+                description: "Professional photography services to showcase your products beautifully"
+              },
+              {
+                icon: Target,
+                title: "Video Production",
+                description: "High-quality video content for marketing, training, and corporate communications"
+              },
+              {
+                icon: Users,
+                title: "Consultation & Product Review",
+                description: "Expert guidance and comprehensive product analysis to optimize performance"
+              }
+            ].map((service, index) => (
+              <Card key={index} className="glass-card p-6 hover-lift hover-glow group">
+                <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <service.icon className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
+                <p className="text-muted-foreground">{service.description}</p>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How We Work Section */}
+      <section className="section bg-muted/30">
+        <div className="container-custom">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              How We <span className="gradient-text">Work</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Our proven 4-step process ensures successful project delivery
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                step: "01",
+                title: "Discovery & Planning",
+                description: "Understanding your goals, target audience, and unique requirements to set the foundation."
+              },
+              {
+                step: "02", 
+                title: "Design & Development",
+                description: "Crafting visually appealing designs and bringing them to life with robust coding."
+              },
+              {
+                step: "03",
+                title: "Testing & Deployment", 
+                description: "Rigorous testing ensures functionality, security, and user-friendliness before launch."
+              },
+              {
+                step: "04",
+                title: "Support & Growth",
+                description: "Ongoing support and relationship building for continuous improvement and success."
+              }
+            ].map((step, index) => (
+              <div key={index} className="glass-card p-6 hover-lift text-center group">
+                <div className="text-4xl font-bold text-primary/20 mb-4 group-hover:text-primary/40 transition-colors">
+                  {step.step}
+                </div>
+                <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
+                <p className="text-muted-foreground text-sm">{step.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Technology Expertise */}
+      <section className="section">
+        <div className="container-custom">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Technology <span className="gradient-text">Experts</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              We specialize in modern technologies to deliver cutting-edge solutions
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-8 items-center justify-center">
+            {[
+              { name: "JavaScript", color: "bg-yellow-500" },
+              { name: "React", color: "bg-blue-500" },
+              { name: "Next.js", color: "bg-gray-900" },
+              { name: "Figma", color: "bg-purple-500" },
+              { name: "Meta", color: "bg-blue-600" },
+              { name: "WordPress", color: "bg-blue-700" },
+              { name: "Azure", color: "bg-blue-400" }
+            ].map((tech, index) => (
+              <div key={index} className="glass-card p-4 rounded-lg hover-lift text-center group">
+                <div className={`w-12 h-12 ${tech.color} rounded-lg mx-auto mb-2 group-hover:scale-110 transition-transform`}></div>
+                <div className="text-sm font-medium">{tech.name}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Clients Section */}
+      <section id="clients" className="section bg-muted/30">
+        <div className="container-custom">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Our <span className="gradient-text">Clients</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Trusted by leading businesses across various industries
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
+            {[
+              "Dinemore", "KeKu", "Mingle Box", "CARE SL", "HuraOman",
+              "Box It", "OnBoard Trading", "River View Villas", "Bamba", "Cuddles & Co"
+            ].map((client, index) => (
+              <div key={index} className="glass-card p-6 rounded-lg hover-lift text-center">
+                <div className="font-semibold text-foreground/80">{client}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="section">
+        <div className="container-custom">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Let's Get to Know <span className="gradient-text">Each Other</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Ready to start your next project? Get in touch with our team today.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div className="space-y-8">
+              <div className="glass-card p-6 rounded-xl">
+                <h3 className="text-xl font-semibold mb-4">Contact Information</h3>
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-3">
+                    <Mail className="w-5 h-5 text-primary" />
+                    <div>
+                      <div className="font-medium">Email</div>
+                      <div className="text-muted-foreground">hello@semantixlabs.com</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <Phone className="w-5 h-5 text-primary" />
+                    <div>
+                      <div className="font-medium">Phone</div>
+                      <div className="text-muted-foreground">+94 77 522 2493</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <MapPin className="w-5 h-5 text-primary" />
+                    <div>
+                      <div className="font-medium">Location</div>
+                      <div className="text-muted-foreground">Colombo, Sri Lanka</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="glass-card p-6 rounded-xl">
+                <h3 className="text-xl font-semibold mb-4">Leadership Team</h3>
+                <div className="space-y-4">
+                  <div>
+                    <div className="font-semibold">S. Shobian</div>
+                    <div className="text-sm text-muted-foreground">Chief Executive Officer</div>
+                    <div className="text-sm text-primary">s.shobian@semantixlabs.com</div>
+                  </div>
+                  <div>
+                    <div className="font-semibold">Umair Shukri</div>
+                    <div className="text-sm text-muted-foreground">Chief Operating Officer</div>
+                    <div className="text-sm text-primary">umairshukri@semantixlabs.com</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="glass-card p-8 rounded-xl">
+              <h3 className="text-xl font-semibold mb-6">Start Your Project</h3>
+              <form className="space-y-6">
+                <div>
+                  <Input placeholder="Your Name" className="w-full" />
+                </div>
+                <div>
+                  <Input type="email" placeholder="Your Email" className="w-full" />
+                </div>
+                <div>
+                  <Input placeholder="Project Budget" className="w-full" />
+                </div>
+                <div>
+                  <Textarea 
+                    placeholder="Tell us about your project..." 
+                    className="w-full min-h-[120px] resize-none"
+                  />
+                </div>
+                <Button className="w-full btn-primary text-lg py-3">
+                  Send Message <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-dark text-dark-foreground">
+        <div className="container-custom py-12">
+          <div className="flex flex-col md:flex-row items-center justify-between">
+            <div className="flex items-center mb-4 md:mb-0">
+              <SemanixLogo className="h-8 w-auto" theme="light" />
+            </div>
+            <div className="text-center md:text-right">
+              <div className="text-sm text-muted-foreground mb-2">
+                www.semantixlabs.com
+              </div>
+              <div className="text-sm text-muted-foreground">
+                © 2024 Semantix Labs. All rights reserved.
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
