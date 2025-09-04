@@ -62,7 +62,7 @@ export default {
 				'glow': 'var(--shadow-glow)'
 			},
 			fontFamily: {
-				sans: ['Product Sans', 'system-ui', 'sans-serif'],
+				sans: ['Inter', 'system-ui', 'sans-serif'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

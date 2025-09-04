@@ -38,21 +38,22 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gradient-subtle">
-      {/* Floating Navigation */}
-      <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50">
-        <div className="glass-card px-6 py-3 rounded-full shadow-elegant">
-          <div className="flex items-center space-x-8">
-            {/* Logo */}
-            <SemanixLogo className="h-6 w-auto" theme="dark" />
+      {/* Navigation */}
+      <nav className="fixed top-0 w-full z-50 glass-card">
+        <div className="container-custom px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center">
+              <SemanixLogo className="h-8 w-auto" theme="dark" />
+            </div>
             
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-6">
-              <button onClick={() => scrollToSection('about')} className="text-foreground/80 hover:text-primary transition-colors text-sm font-medium">About</button>
-              <button onClick={() => scrollToSection('services')} className="text-foreground/80 hover:text-primary transition-colors text-sm font-medium">Services</button>
-              <button onClick={() => scrollToSection('clients')} className="text-foreground/80 hover:text-primary transition-colors text-sm font-medium">Clients</button>
-              <button onClick={() => scrollToSection('contact')} className="text-foreground/80 hover:text-primary transition-colors text-sm font-medium">Contact</button>
-              <Button size="sm" className="btn-primary px-4 py-2 text-sm">
-                Start Project
+            <div className="hidden md:flex items-center space-x-8">
+              <button onClick={() => scrollToSection('about')} className="text-foreground/80 hover:text-primary transition-colors">About</button>
+              <button onClick={() => scrollToSection('services')} className="text-foreground/80 hover:text-primary transition-colors">Services</button>
+              <button onClick={() => scrollToSection('clients')} className="text-foreground/80 hover:text-primary transition-colors">Clients</button>
+              <button onClick={() => scrollToSection('contact')} className="text-foreground/80 hover:text-primary transition-colors">Contact</button>
+              <Button className="btn-primary">
+                Start Project <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </div>
 
@@ -63,134 +64,64 @@ const Index = () => {
                 size="sm"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               >
-                {isMobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+                {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </Button>
             </div>
           </div>
-        </div>
 
-        {/* Mobile Navigation Dropdown */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden mt-2 glass-card rounded-2xl p-4 shadow-elegant">
-            <div className="flex flex-col space-y-3">
-              <button onClick={() => scrollToSection('about')} className="text-left text-foreground/80 hover:text-primary transition-colors text-sm font-medium py-2">About</button>
-              <button onClick={() => scrollToSection('services')} className="text-left text-foreground/80 hover:text-primary transition-colors text-sm font-medium py-2">Services</button>
-              <button onClick={() => scrollToSection('clients')} className="text-left text-foreground/80 hover:text-primary transition-colors text-sm font-medium py-2">Clients</button>
-              <button onClick={() => scrollToSection('contact')} className="text-left text-foreground/80 hover:text-primary transition-colors text-sm font-medium py-2">Contact</button>
-              <Button className="btn-primary w-full justify-center mt-2">
-                Start Project
-              </Button>
+          {/* Mobile Navigation */}
+          {isMobileMenuOpen && (
+            <div className="md:hidden border-t border-border/20 py-4">
+              <div className="flex flex-col space-y-4">
+                <button onClick={() => scrollToSection('about')} className="text-left text-foreground/80 hover:text-primary transition-colors">About</button>
+                <button onClick={() => scrollToSection('services')} className="text-left text-foreground/80 hover:text-primary transition-colors">Services</button>
+                <button onClick={() => scrollToSection('clients')} className="text-left text-foreground/80 hover:text-primary transition-colors">Clients</button>
+                <button onClick={() => scrollToSection('contact')} className="text-left text-foreground/80 hover:text-primary transition-colors">Contact</button>
+                <Button className="btn-primary w-full justify-center">
+                  Start Project <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </nav>
 
-      {/* Hero Section - Split Screen Layout */}
-      <section className="min-h-screen flex pt-20">
-        {/* Left Panel - Dark */}
-        <div className="w-full lg:w-1/2 bg-gradient-dark flex flex-col justify-center items-start p-8 lg:p-16 text-white">
-          <div className="max-w-lg">
-            <Badge className="mb-6 bg-primary/20 text-primary-glow border-primary/30 hover:bg-primary/30 transition-colors">
-              Sri Lankan Tech Excellence
-            </Badge>
-            <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
-              WEB & SOFTWARE
-              <br />
-              <span className="gradient-text bg-gradient-to-r from-primary-glow to-accent bg-clip-text text-transparent">
-                DEVELOPMENT
-              </span>
-              <br />
-              AGENCY
-            </h1>
-            <p className="text-lg text-gray-300 mb-8 leading-relaxed">
-              People do not buy goods and services. They buy relations, stories, and magic.
-            </p>
-            <p className="text-sm text-gray-400 mb-8">
-              - Seth Godin
-            </p>
-            
-            {/* Client Logos */}
-            <div className="flex flex-wrap items-center gap-6 opacity-60">
-              {["Dinemore", "KeKu", "Mingle Box", "CARE SL", "HuraOman"].map((client, index) => (
-                <div key={index} className="text-sm font-medium">
-                  {client}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Right Panel - Light */}
-        <div className="hidden lg:flex w-1/2 bg-gradient-subtle flex-col justify-center p-16">
-          {/* Stats Section */}
-          <div className="mb-12">
-            <div className="grid grid-cols-3 gap-8 text-center mb-8">
-              <div>
-                <div className="text-4xl font-bold text-primary mb-2">50+</div>
-                <div className="text-sm text-muted-foreground">Projects done</div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold text-primary mb-2">416%</div>
-                <div className="text-sm text-muted-foreground">Facebook reach</div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold text-primary mb-2">100%</div>
-                <div className="text-sm text-muted-foreground">Client satisfaction</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Testimonial Card */}
-          <div className="glass-card p-6 rounded-xl mb-8">
-            <p className="text-muted-foreground mb-4 italic">
-              "Semantix Labs delivered exceptional results for our digital transformation. Their expertise and dedication made a real impact. Highly recommended!"
-            </p>
-            <div className="flex items-center">
-              <div className="w-10 h-10 bg-gradient-primary rounded-full mr-3"></div>
-              <div>
-                <div className="font-semibold text-sm">Rajesh Kumar</div>
-                <div className="text-xs text-muted-foreground">CEO Dynamic Group</div>
-              </div>
-            </div>
-          </div>
-
-          {/* CTA Section */}
-          <div className="glass-card p-6 rounded-xl">
-            <h3 className="text-xl font-bold mb-2">DISCUSS WITH OUR TEAM</h3>
-            <p className="text-sm text-muted-foreground mb-4">
-              We are passionate marketers and strategists dedicated to helping your business thrive online. Let's build your digital future together.
-            </p>
-            <Button className="btn-primary">
-              LEARN MORE
+      {/* Hero Section */}
+      <section className="min-h-screen flex items-center justify-center text-center px-4 pt-16">
+        <div className="container-custom max-w-4xl animate-slide-up">
+          <Badge className="mb-6 bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 transition-colors">
+            Sri Lankan Tech Excellence
+          </Badge>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 gradient-text leading-tight">
+            Building Technology That Empowers Businesses
+          </h1>
+          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
+            We're a dynamic and forward-thinking web and software development agency committed to making technology accessible to all through exceptional client service and innovative solutions.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Button size="lg" className="btn-primary text-lg px-8 py-4">
+              Start Your Project <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
+            <Button variant="outline" size="lg" className="text-lg px-8 py-4 border-2 hover:bg-primary/5">
+              View Our Work <ExternalLink className="w-5 h-5 ml-2" />
+            </Button>
+          </div>
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div className="animate-float">
+              <div className="text-3xl font-bold text-primary">50+</div>
+              <div className="text-muted-foreground">Projects Delivered</div>
+            </div>
+            <div className="animate-float" style={{ animationDelay: '1s' }}>
+              <div className="text-3xl font-bold text-primary">416%</div>
+              <div className="text-muted-foreground">Facebook Reach Growth</div>
+            </div>
+            <div className="animate-float" style={{ animationDelay: '2s' }}>
+              <div className="text-3xl font-bold text-primary">100%</div>
+              <div className="text-muted-foreground">Client Satisfaction</div>
+            </div>
           </div>
         </div>
       </section>
-
-      {/* Mobile Hero Content */}
-      <div className="lg:hidden bg-gradient-subtle py-16 px-4 mt-20">
-        <div className="container-custom max-w-2xl text-center">
-          {/* Stats */}
-          <div className="grid grid-cols-3 gap-6 mb-8">
-            <div>
-              <div className="text-3xl font-bold text-primary mb-1">50+</div>
-              <div className="text-xs text-muted-foreground">Projects</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-primary mb-1">416%</div>
-              <div className="text-xs text-muted-foreground">Growth</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-primary mb-1">100%</div>
-              <div className="text-xs text-muted-foreground">Satisfaction</div>
-            </div>
-          </div>
-          
-          <Button size="lg" className="btn-primary">
-            Start Your Project <ArrowRight className="w-5 h-5 ml-2" />
-          </Button>
-        </div>
-      </div>
 
       {/* About Section */}
       <section id="about" className="section bg-muted/30">
