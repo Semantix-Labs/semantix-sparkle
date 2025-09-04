@@ -38,22 +38,21 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gradient-subtle">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 glass-card">
-        <div className="container-custom px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center">
-              <SemanixLogo className="h-8 w-auto" theme="dark" />
-            </div>
+      {/* Floating Navigation */}
+      <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50">
+        <div className="glass-card px-6 py-3 rounded-full shadow-elegant">
+          <div className="flex items-center space-x-8">
+            {/* Logo */}
+            <SemanixLogo className="h-6 w-auto" theme="dark" />
             
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
-              <button onClick={() => scrollToSection('about')} className="text-foreground/80 hover:text-primary transition-colors">About</button>
-              <button onClick={() => scrollToSection('services')} className="text-foreground/80 hover:text-primary transition-colors">Services</button>
-              <button onClick={() => scrollToSection('clients')} className="text-foreground/80 hover:text-primary transition-colors">Clients</button>
-              <button onClick={() => scrollToSection('contact')} className="text-foreground/80 hover:text-primary transition-colors">Contact</button>
-              <Button className="btn-primary">
-                Start Project <ArrowRight className="w-4 h-4 ml-2" />
+            <div className="hidden md:flex items-center space-x-6">
+              <button onClick={() => scrollToSection('about')} className="text-foreground/80 hover:text-primary transition-colors text-sm font-medium">About</button>
+              <button onClick={() => scrollToSection('services')} className="text-foreground/80 hover:text-primary transition-colors text-sm font-medium">Services</button>
+              <button onClick={() => scrollToSection('clients')} className="text-foreground/80 hover:text-primary transition-colors text-sm font-medium">Clients</button>
+              <button onClick={() => scrollToSection('contact')} className="text-foreground/80 hover:text-primary transition-colors text-sm font-medium">Contact</button>
+              <Button size="sm" className="btn-primary px-4 py-2 text-sm">
+                Start Project
               </Button>
             </div>
 
@@ -64,30 +63,30 @@ const Index = () => {
                 size="sm"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               >
-                {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                {isMobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
               </Button>
             </div>
           </div>
-
-          {/* Mobile Navigation */}
-          {isMobileMenuOpen && (
-            <div className="md:hidden border-t border-border/20 py-4">
-              <div className="flex flex-col space-y-4">
-                <button onClick={() => scrollToSection('about')} className="text-left text-foreground/80 hover:text-primary transition-colors">About</button>
-                <button onClick={() => scrollToSection('services')} className="text-left text-foreground/80 hover:text-primary transition-colors">Services</button>
-                <button onClick={() => scrollToSection('clients')} className="text-left text-foreground/80 hover:text-primary transition-colors">Clients</button>
-                <button onClick={() => scrollToSection('contact')} className="text-left text-foreground/80 hover:text-primary transition-colors">Contact</button>
-                <Button className="btn-primary w-full justify-center">
-                  Start Project <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-              </div>
-            </div>
-          )}
         </div>
+
+        {/* Mobile Navigation Dropdown */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden mt-2 glass-card rounded-2xl p-4 shadow-elegant">
+            <div className="flex flex-col space-y-3">
+              <button onClick={() => scrollToSection('about')} className="text-left text-foreground/80 hover:text-primary transition-colors text-sm font-medium py-2">About</button>
+              <button onClick={() => scrollToSection('services')} className="text-left text-foreground/80 hover:text-primary transition-colors text-sm font-medium py-2">Services</button>
+              <button onClick={() => scrollToSection('clients')} className="text-left text-foreground/80 hover:text-primary transition-colors text-sm font-medium py-2">Clients</button>
+              <button onClick={() => scrollToSection('contact')} className="text-left text-foreground/80 hover:text-primary transition-colors text-sm font-medium py-2">Contact</button>
+              <Button className="btn-primary w-full justify-center mt-2">
+                Start Project
+              </Button>
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* Hero Section - Split Screen Layout */}
-      <section className="min-h-screen flex">
+      <section className="min-h-screen flex pt-20">
         {/* Left Panel - Dark */}
         <div className="w-full lg:w-1/2 bg-gradient-dark flex flex-col justify-center items-start p-8 lg:p-16 text-white">
           <div className="max-w-lg">
@@ -169,7 +168,7 @@ const Index = () => {
       </section>
 
       {/* Mobile Hero Content */}
-      <div className="lg:hidden bg-gradient-subtle py-16 px-4">
+      <div className="lg:hidden bg-gradient-subtle py-16 px-4 mt-20">
         <div className="container-custom max-w-2xl text-center">
           {/* Stats */}
           <div className="grid grid-cols-3 gap-6 mb-8">
