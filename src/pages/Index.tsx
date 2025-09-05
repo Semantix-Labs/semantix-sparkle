@@ -21,7 +21,15 @@ import {
   ExternalLink,
   CheckCircle,
   Menu,
-  X
+  X,
+  Globe,
+  Megaphone,
+  Monitor,
+  Settings,
+  TrendingUp,
+  Award,
+  ChevronDown,
+  ChevronUp
 } from 'lucide-react';
 import SemanixLogo from '@/components/SemanixLogo';
 
@@ -38,22 +46,21 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gradient-subtle">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 glass-card">
-        <div className="container-custom px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center">
-              <SemanixLogo className="h-8 w-auto" theme="dark" />
-            </div>
+      {/* Floating Navigation */}
+      <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50">
+        <div className="glass-card px-6 py-3 rounded-full shadow-elegant">
+          <div className="flex items-center space-x-8">
+            {/* Logo */}
+            <SemanixLogo className="h-6 w-auto" theme="dark" />
             
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
-              <button onClick={() => scrollToSection('about')} className="text-foreground/80 hover:text-primary transition-colors">About</button>
-              <button onClick={() => scrollToSection('services')} className="text-foreground/80 hover:text-primary transition-colors">Services</button>
-              <button onClick={() => scrollToSection('clients')} className="text-foreground/80 hover:text-primary transition-colors">Clients</button>
-              <button onClick={() => scrollToSection('contact')} className="text-foreground/80 hover:text-primary transition-colors">Contact</button>
-              <Button className="btn-primary">
-                Start Project <ArrowRight className="w-4 h-4 ml-2" />
+            <div className="hidden md:flex items-center space-x-6">
+              <button onClick={() => scrollToSection('about')} className="text-foreground/80 hover:text-primary transition-colors text-sm font-medium">About</button>
+              <button onClick={() => scrollToSection('services')} className="text-foreground/80 hover:text-primary transition-colors text-sm font-medium">Services</button>
+              <button onClick={() => scrollToSection('clients')} className="text-foreground/80 hover:text-primary transition-colors text-sm font-medium">Clients</button>
+              <button onClick={() => scrollToSection('contact')} className="text-foreground/80 hover:text-primary transition-colors text-sm font-medium">Contact</button>
+              <Button size="sm" className="btn-primary px-4 py-2 text-sm">
+                Start Project
               </Button>
             </div>
 
@@ -64,30 +71,30 @@ const Index = () => {
                 size="sm"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               >
-                {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                {isMobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
               </Button>
             </div>
           </div>
-
-          {/* Mobile Navigation */}
-          {isMobileMenuOpen && (
-            <div className="md:hidden border-t border-border/20 py-4">
-              <div className="flex flex-col space-y-4">
-                <button onClick={() => scrollToSection('about')} className="text-left text-foreground/80 hover:text-primary transition-colors">About</button>
-                <button onClick={() => scrollToSection('services')} className="text-left text-foreground/80 hover:text-primary transition-colors">Services</button>
-                <button onClick={() => scrollToSection('clients')} className="text-left text-foreground/80 hover:text-primary transition-colors">Clients</button>
-                <button onClick={() => scrollToSection('contact')} className="text-left text-foreground/80 hover:text-primary transition-colors">Contact</button>
-                <Button className="btn-primary w-full justify-center">
-                  Start Project <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-              </div>
-            </div>
-          )}
         </div>
+
+        {/* Mobile Navigation Dropdown */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden mt-2 glass-card rounded-2xl p-4 shadow-elegant">
+            <div className="flex flex-col space-y-3">
+              <button onClick={() => scrollToSection('about')} className="text-left text-foreground/80 hover:text-primary transition-colors text-sm font-medium py-2">About</button>
+              <button onClick={() => scrollToSection('services')} className="text-left text-foreground/80 hover:text-primary transition-colors text-sm font-medium py-2">Services</button>
+              <button onClick={() => scrollToSection('clients')} className="text-left text-foreground/80 hover:text-primary transition-colors text-sm font-medium py-2">Clients</button>
+              <button onClick={() => scrollToSection('contact')} className="text-left text-foreground/80 hover:text-primary transition-colors text-sm font-medium py-2">Contact</button>
+              <Button className="btn-primary w-full justify-center mt-2">
+                Start Project
+              </Button>
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* Hero Section - Split Screen Layout */}
-      <section className="min-h-screen flex">
+      <section className="min-h-screen flex pt-20">
         {/* Left Panel - Dark */}
         <div className="w-full lg:w-1/2 bg-gradient-dark flex flex-col justify-center items-start p-8 lg:p-16 text-white">
           <div className="max-w-lg">
@@ -169,7 +176,7 @@ const Index = () => {
       </section>
 
       {/* Mobile Hero Content */}
-      <div className="lg:hidden bg-gradient-subtle py-16 px-4">
+      <div className="lg:hidden bg-gradient-subtle py-16 px-4 mt-20">
         <div className="container-custom max-w-2xl text-center">
           {/* Stats */}
           <div className="grid grid-cols-3 gap-6 mb-8">
@@ -234,59 +241,181 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Services Section */}
-      <section id="services" className="section">
+      {/* Our Features Section */}
+      <section className="section bg-gradient-dark text-white">
         <div className="container-custom">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Our <span className="gradient-text">Services</span>
+            <Badge className="mb-4 bg-primary/20 text-primary-glow border-primary/30">
+              OUR FEATURES
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+              The unique qualities that make Semantix Labs special.
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Comprehensive solutions to help your business thrive in the digital landscape
-            </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                icon: Code,
-                title: "Web & Software Development",
-                description: "Custom web applications and software solutions built with modern technologies"
+                icon: Zap,
+                title: "Innovating products and solutions within your time and budget.",
+                description: "We deliver cutting-edge technology solutions that align perfectly with your timeline and budget constraints."
               },
               {
-                icon: Palette,
-                title: "Online Branding & Graphics",
-                description: "Complete brand identity and visual design services that make you stand out"
+                icon: Globe,
+                title: "World-class development with pixel-perfect user interface designs.",
+                description: "Our development team creates stunning, responsive interfaces that provide exceptional user experiences."
               },
               {
-                icon: MessageSquare,
-                title: "Social Media Management",
-                description: "Strategic social media campaigns that boost engagement and reach"
-              },
-              {
-                icon: Camera,
-                title: "Product Photography",
-                description: "Professional photography services to showcase your products beautifully"
-              },
-              {
-                icon: Target,
-                title: "Video Production",
-                description: "High-quality video content for marketing, training, and corporate communications"
-              },
-              {
-                icon: Users,
-                title: "Consultation & Product Review",
-                description: "Expert guidance and comprehensive product analysis to optimize performance"
+                icon: TrendingUp,
+                title: "Strategic, performance-driven, and comprehensive digital marketing.",
+                description: "Data-driven marketing strategies that boost your online presence and drive measurable business growth."
               }
-            ].map((service, index) => (
-              <Card key={index} className="glass-card p-6 hover-lift hover-glow group">
-                <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <service.icon className="w-6 h-6 text-white" />
+            ].map((feature, index) => (
+              <div key={index} className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-8 hover:bg-white/15 transition-all group">
+                <div className="w-16 h-16 bg-gradient-primary rounded-xl mb-6 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <feature.icon className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
-                <p className="text-muted-foreground">{service.description}</p>
-              </Card>
+                <h3 className="text-xl font-semibold mb-4 text-white leading-tight">{feature.title}</h3>
+                <p className="text-gray-300 mb-6 leading-relaxed">{feature.description}</p>
+                <Button variant="outline" className="border-white/30 text-white hover:bg-white/10 hover:border-white/50">
+                  MORE INFO <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section id="services" className="section bg-gradient-dark text-white">
+        <div className="container-custom">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Left Gradient Card */}
+            <div className="lg:col-span-1">
+              <div className="bg-gradient-primary rounded-2xl p-8 h-full flex flex-col justify-center">
+                <Badge className="mb-4 bg-white/20 text-white border-white/30 w-fit">
+                  OUR SERVICES
+                </Badge>
+                <h2 className="text-3xl font-bold mb-6 text-white leading-tight">
+                  Our creative & digital agency services
+                </h2>
+                <Button className="bg-white/20 text-white border-white/30 hover:bg-white/30 w-fit">
+                  See All
+                </Button>
+              </div>
+            </div>
+            
+            {/* Service Cards Grid */}
+            <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[
+                {
+                  icon: Code,
+                  title: "Web Development",
+                  category: "SOFTWARE",
+                  description: "Custom web applications built with modern technologies"
+                },
+                {
+                  icon: MessageSquare,
+                  title: "Social Marketing",
+                  category: "MEDIA", 
+                  description: "Strategic social media campaigns that drive engagement"
+                },
+                {
+                  icon: Monitor,
+                  title: "App Development", 
+                  category: "SOFTWARE",
+                  description: "Mobile and desktop applications for all platforms"
+                },
+                {
+                  icon: Search,
+                  title: "SEO Optimization",
+                  category: "OPTIMIZED",
+                  description: "Search engine optimization for better visibility"
+                },
+                {
+                  icon: Megaphone,
+                  title: "Brand Marketing",
+                  category: "ADVERTISEMENT", 
+                  description: "Complete brand identity and marketing solutions"
+                },
+                {
+                  icon: Target,
+                  title: "Digital Marketing",
+                  category: "AGENCY",
+                  description: "Comprehensive digital marketing strategies"
+                }
+              ].map((service, index) => (
+                <div key={index} className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6 hover:bg-white/15 transition-all group">
+                  <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <service.icon className="w-6 h-6 text-white" />
+                  </div>
+                  <p className="text-primary-glow text-sm font-medium mb-2">{service.category}</p>
+                  <h3 className="text-lg font-semibold mb-3 text-white">{service.title}</h3>
+                  <p className="text-gray-300 text-sm">{service.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Grow Business Section */}
+      <section className="section bg-gradient-dark text-white">
+        <div className="container-custom">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Left Content */}
+            <div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-8 text-white leading-tight">
+                Grow business with creative ideas
+              </h2>
+              
+              <div className="space-y-6">
+                <div className="flex items-start space-x-4">
+                  <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center mt-1 flex-shrink-0">
+                    <CheckCircle className="w-4 h-4 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2 text-white">Professional Agency</h3>
+                    <p className="text-gray-300">
+                      Comprehensive digital solutions with modern technologies and creative expertise to elevate your brand presence.
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-4">
+                  <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center mt-1 flex-shrink-0">
+                    <CheckCircle className="w-4 h-4 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2 text-white">Solutions Provider</h3>
+                    <p className="text-gray-300">
+                      Expert consultation and tailored digital solutions that drive measurable results for your business growth.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Right Content */}
+            <div className="text-center lg:text-right">
+              <div className="mb-8">
+                <h3 className="text-lg text-gray-300 mb-4">We have worked for you</h3>
+                <div className="text-6xl md:text-8xl font-bold text-white/20 tracking-widest">
+                  SINCE 2023
+                </div>
+              </div>
+              
+              {/* Workspace Visual Placeholder */}
+              <div className="bg-gradient-primary/20 rounded-2xl p-8 backdrop-blur-lg border border-white/20">
+                <div className="w-16 h-16 bg-gradient-primary rounded-xl mx-auto mb-4 flex items-center justify-center">
+                  <Settings className="w-8 h-8 text-white" />
+                </div>
+                <h4 className="text-lg font-semibold text-white mb-2">Modern Workspace</h4>
+                <p className="text-gray-300 text-sm">
+                  Cutting-edge development environment with the latest tools and technologies
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -334,6 +463,107 @@ const Index = () => {
                 <p className="text-muted-foreground text-sm">{step.description}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Digital Experience Section */}
+      <section className="section bg-gradient-dark text-white">
+        <div className="container-custom">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            {/* Left Content */}
+            <div>
+              <Badge className="mb-4 bg-primary/20 text-primary-glow border-primary/30">
+                OUR DIGITAL EXPERIENCE
+              </Badge>
+              <h2 className="text-4xl md:text-5xl font-bold mb-8 text-white leading-tight">
+                Leading the best digital agency in Sri Lanka
+              </h2>
+              
+              <div className="space-y-4 mb-8">
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 text-primary" />
+                  <span className="text-white">Professional staff</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 text-primary" />
+                  <span className="text-white">100% Satisfaction guarantee</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 text-primary" />
+                  <span className="text-white">Innovative ideas & solutions</span>
+                </div>
+              </div>
+              
+              {/* Progress Circles */}
+              <div className="grid grid-cols-2 gap-8 mb-8">
+                <div className="text-center">
+                  <div className="relative w-24 h-24 mx-auto mb-4">
+                    <svg className="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+                      <circle cx="50" cy="50" r="40" stroke="rgba(255,255,255,0.2)" strokeWidth="8" fill="none" />
+                      <circle cx="50" cy="50" r="40" stroke="hsl(var(--primary))" strokeWidth="8" fill="none" 
+                        strokeDasharray={`${2 * Math.PI * 40}`} strokeDashoffset={`${2 * Math.PI * 40 * (1 - 0.85)}`}
+                        className="transition-all duration-1000" />
+                    </svg>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="text-2xl font-bold text-primary">85%</span>
+                    </div>
+                  </div>
+                  <h4 className="font-semibold text-white">Company Growth</h4>
+                </div>
+                
+                <div className="text-center">
+                  <div className="relative w-24 h-24 mx-auto mb-4">
+                    <svg className="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+                      <circle cx="50" cy="50" r="40" stroke="rgba(255,255,255,0.2)" strokeWidth="8" fill="none" />
+                      <circle cx="50" cy="50" r="40" stroke="hsl(var(--primary))" strokeWidth="8" fill="none" 
+                        strokeDasharray={`${2 * Math.PI * 40}`} strokeDashoffset={`${2 * Math.PI * 40 * (1 - 0.98)}`}
+                        className="transition-all duration-1000" />
+                    </svg>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="text-2xl font-bold text-primary">98%</span>
+                    </div>
+                  </div>
+                  <h4 className="font-semibold text-white">Satisfied Clients</h4>
+                </div>
+              </div>
+            </div>
+            
+            {/* Right Content - FAQ */}
+            <div className="space-y-4">
+              {[
+                {
+                  question: "How long have you been in business?",
+                  answer: "Semantix Labs was founded in 2023 with a vision to make technology accessible to all. Despite being relatively new, our team brings years of collective experience in web development, digital marketing, and creative design."
+                },
+                {
+                  question: "What makes your approach different?",
+                  answer: "We focus on building long-term relationships with our clients, providing personalized solutions that grow with your business. Our Sri Lankan roots combined with global standards ensure quality at competitive rates."
+                },
+                {
+                  question: "Do you work with international clients?",
+                  answer: "Yes, while we're based in Colombo, Sri Lanka, we work with clients globally. Our diverse portfolio includes businesses from various countries and industries."
+                }
+              ].map((faq, index) => {
+                const [isOpen, setIsOpen] = React.useState(false);
+                return (
+                  <div key={index} className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl overflow-hidden">
+                    <button
+                      onClick={() => setIsOpen(!isOpen)}
+                      className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
+                    >
+                      <h4 className="font-semibold text-white">{faq.question}</h4>
+                      {isOpen ? <ChevronUp className="w-5 h-5 text-primary" /> : <ChevronDown className="w-5 h-5 text-primary" />}
+                    </button>
+                    {isOpen && (
+                      <div className="px-6 pb-6">
+                        <p className="text-gray-300 leading-relaxed">{faq.answer}</p>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
