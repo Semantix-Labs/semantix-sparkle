@@ -93,112 +93,120 @@ const Index = () => {
         )}
       </nav>
 
-      {/* Hero Section - Split Screen Layout */}
-      <section className="min-h-screen flex pt-20">
-        {/* Left Panel - Dark */}
-        <div className="w-full lg:w-1/2 bg-gradient-dark flex flex-col justify-center items-start p-8 lg:p-16 text-white">
-          <div className="max-w-lg">
-            <Badge className="mb-6 bg-primary/20 text-primary-glow border-primary/30 hover:bg-primary/30 transition-colors">
-              Sri Lankan Tech Excellence
-            </Badge>
-            <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
-              WEB & SOFTWARE
-              <br />
-              <span className="gradient-text bg-gradient-to-r from-primary-glow to-accent bg-clip-text text-transparent">
-                DEVELOPMENT
-              </span>
-              <br />
-              AGENCY
-            </h1>
-            <p className="text-lg text-gray-300 mb-8 leading-relaxed">
-              People do not buy goods and services. They buy relations, stories, and magic.
-            </p>
-            <p className="text-sm text-gray-400 mb-8">
-              - Seth Godin
-            </p>
+      {/* Hero Section - Full Width Horizontal Layout */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        {/* Background Video Container - Ready for video implementation */}
+        <div className="absolute inset-0 bg-gradient-dark">
+          {/* Video will go here */}
+          <div className="absolute inset-0 bg-black/40 z-10"></div>
+        </div>
+
+        {/* Content Container */}
+        <div className="relative z-20 container-custom">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center min-h-[80vh]">
             
-            {/* Client Logos */}
-            <div className="flex flex-wrap items-center gap-6 opacity-60">
-              {["Dinemore", "KeKu", "Mingle Box", "CARE SL", "HuraOman"].map((client, index) => (
-                <div key={index} className="text-sm font-medium">
-                  {client}
+            {/* Main Content - Left Side */}
+            <div className="lg:col-span-7 text-center lg:text-left">
+              <Badge className="mb-6 bg-primary/20 text-primary-glow border-primary/30 hover:bg-primary/30 transition-colors">
+                Sri Lankan Tech Excellence
+              </Badge>
+              
+              <h1 className="text-4xl lg:text-7xl xl:text-8xl font-bold mb-6 leading-tight text-white">
+                WEB & SOFTWARE
+                <br />
+                <span className="gradient-text bg-gradient-to-r from-primary-glow to-accent bg-clip-text text-transparent">
+                  DEVELOPMENT
+                </span>
+                <br />
+                AGENCY
+              </h1>
+              
+              <p className="text-lg lg:text-xl text-gray-300 mb-4 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                People do not buy goods and services. They buy relations, stories, and magic.
+              </p>
+              
+              <p className="text-sm text-gray-400 mb-8 max-w-2xl mx-auto lg:mx-0">
+                - Seth Godin
+              </p>
+              
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
+                <Button size="lg" className="btn-primary text-lg px-8 py-4">
+                  Start Your Project <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+                <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 text-lg px-8 py-4">
+                  Learn More
+                </Button>
+              </div>
+              
+              {/* Client Logos */}
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6 opacity-60">
+                {["Dinemore", "KeKu", "Mingle Box", "CARE SL", "HuraOman"].map((client, index) => (
+                  <div key={index} className="text-sm font-medium text-white">
+                    {client}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Stats & Info - Right Side */}
+            <div className="lg:col-span-5 space-y-8">
+              
+              {/* Stats Grid */}
+              <div className="grid grid-cols-3 gap-6 text-center">
+                <div className="glass-card p-4 rounded-xl">
+                  <div className="text-3xl lg:text-4xl font-bold text-primary mb-2">50+</div>
+                  <div className="text-xs lg:text-sm text-white/80">Projects done</div>
                 </div>
-              ))}
+                <div className="glass-card p-4 rounded-xl">
+                  <div className="text-3xl lg:text-4xl font-bold text-primary mb-2">416%</div>
+                  <div className="text-xs lg:text-sm text-white/80">Facebook reach</div>
+                </div>
+                <div className="glass-card p-4 rounded-xl">
+                  <div className="text-3xl lg:text-4xl font-bold text-primary mb-2">100%</div>
+                  <div className="text-xs lg:text-sm text-white/80">Client satisfaction</div>
+                </div>
+              </div>
+
+              {/* Testimonial Card */}
+              <div className="glass-card p-6 rounded-xl">
+                <p className="text-white/90 mb-4 italic leading-relaxed">
+                  "Semantix Labs delivered exceptional results for our digital transformation. Their expertise and dedication made a real impact. Highly recommended!"
+                </p>
+                <div className="flex items-center">
+                  <div className="w-12 h-12 bg-gradient-primary rounded-full mr-4 flex items-center justify-center">
+                    <span className="text-white font-bold text-lg">R</span>
+                  </div>
+                  <div>
+                    <div className="font-semibold text-white">Rajesh Kumar</div>
+                    <div className="text-sm text-white/70">CEO Dynamic Group</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* CTA Card */}
+              <div className="glass-card p-6 rounded-xl">
+                <h3 className="text-xl font-bold mb-3 text-white">DISCUSS WITH OUR TEAM</h3>
+                <p className="text-sm text-white/80 mb-4 leading-relaxed">
+                  We are passionate marketers and strategists dedicated to helping your business thrive online. Let's build your digital future together.
+                </p>
+                <Button className="btn-primary w-full">
+                  LEARN MORE
+                </Button>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Right Panel - Light */}
-        <div className="hidden lg:flex w-1/2 bg-gradient-subtle flex-col justify-center p-16">
-          {/* Stats Section */}
-          <div className="mb-12">
-            <div className="grid grid-cols-3 gap-8 text-center mb-8">
-              <div>
-                <div className="text-4xl font-bold text-primary mb-2">50+</div>
-                <div className="text-sm text-muted-foreground">Projects done</div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold text-primary mb-2">416%</div>
-                <div className="text-sm text-muted-foreground">Facebook reach</div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold text-primary mb-2">100%</div>
-                <div className="text-sm text-muted-foreground">Client satisfaction</div>
-              </div>
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+          <div className="animate-bounce">
+            <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+              <div className="w-1 h-3 bg-white/60 rounded-full mt-2"></div>
             </div>
-          </div>
-
-          {/* Testimonial Card */}
-          <div className="glass-card p-6 rounded-xl mb-8">
-            <p className="text-muted-foreground mb-4 italic">
-              "Semantix Labs delivered exceptional results for our digital transformation. Their expertise and dedication made a real impact. Highly recommended!"
-            </p>
-            <div className="flex items-center">
-              <div className="w-10 h-10 bg-gradient-primary rounded-full mr-3"></div>
-              <div>
-                <div className="font-semibold text-sm">Rajesh Kumar</div>
-                <div className="text-xs text-muted-foreground">CEO Dynamic Group</div>
-              </div>
-            </div>
-          </div>
-
-          {/* CTA Section */}
-          <div className="glass-card p-6 rounded-xl">
-            <h3 className="text-xl font-bold mb-2">DISCUSS WITH OUR TEAM</h3>
-            <p className="text-sm text-muted-foreground mb-4">
-              We are passionate marketers and strategists dedicated to helping your business thrive online. Let's build your digital future together.
-            </p>
-            <Button className="btn-primary">
-              LEARN MORE
-            </Button>
           </div>
         </div>
       </section>
-
-      {/* Mobile Hero Content */}
-      <div className="lg:hidden bg-gradient-subtle py-16 px-4 mt-20">
-        <div className="container-custom max-w-2xl text-center">
-          {/* Stats */}
-          <div className="grid grid-cols-3 gap-6 mb-8">
-            <div>
-              <div className="text-3xl font-bold text-primary mb-1">50+</div>
-              <div className="text-xs text-muted-foreground">Projects</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-primary mb-1">416%</div>
-              <div className="text-xs text-muted-foreground">Growth</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-primary mb-1">100%</div>
-              <div className="text-xs text-muted-foreground">Satisfaction</div>
-            </div>
-          </div>
-          
-          <Button size="lg" className="btn-primary">
-            Start Your Project <ArrowRight className="w-5 h-5 ml-2" />
-          </Button>
-        </div>
-      </div>
 
       {/* About Section */}
       <section id="about" className="section bg-muted/30">
