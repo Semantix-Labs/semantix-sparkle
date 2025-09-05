@@ -21,15 +21,7 @@ import {
   ExternalLink,
   CheckCircle,
   Menu,
-  X,
-  Globe,
-  Megaphone,
-  Monitor,
-  Settings,
-  TrendingUp,
-  Award,
-  ChevronDown,
-  ChevronUp
+  X
 } from 'lucide-react';
 import SemanixLogo from '@/components/SemanixLogo';
 
@@ -241,181 +233,59 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Our Features Section */}
-      <section className="section bg-gradient-dark text-white">
+      {/* Services Section */}
+      <section id="services" className="section">
         <div className="container-custom">
           <div className="text-center mb-16">
-            <Badge className="mb-4 bg-primary/20 text-primary-glow border-primary/30">
-              OUR FEATURES
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
-              The unique qualities that make Semantix Labs special.
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Our <span className="gradient-text">Services</span>
             </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Comprehensive solutions to help your business thrive in the digital landscape
+            </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                icon: Zap,
-                title: "Innovating products and solutions within your time and budget.",
-                description: "We deliver cutting-edge technology solutions that align perfectly with your timeline and budget constraints."
+                icon: Code,
+                title: "Web & Software Development",
+                description: "Custom web applications and software solutions built with modern technologies"
               },
               {
-                icon: Globe,
-                title: "World-class development with pixel-perfect user interface designs.",
-                description: "Our development team creates stunning, responsive interfaces that provide exceptional user experiences."
+                icon: Palette,
+                title: "Online Branding & Graphics",
+                description: "Complete brand identity and visual design services that make you stand out"
               },
               {
-                icon: TrendingUp,
-                title: "Strategic, performance-driven, and comprehensive digital marketing.",
-                description: "Data-driven marketing strategies that boost your online presence and drive measurable business growth."
+                icon: MessageSquare,
+                title: "Social Media Management",
+                description: "Strategic social media campaigns that boost engagement and reach"
+              },
+              {
+                icon: Camera,
+                title: "Product Photography",
+                description: "Professional photography services to showcase your products beautifully"
+              },
+              {
+                icon: Target,
+                title: "Video Production",
+                description: "High-quality video content for marketing, training, and corporate communications"
+              },
+              {
+                icon: Users,
+                title: "Consultation & Product Review",
+                description: "Expert guidance and comprehensive product analysis to optimize performance"
               }
-            ].map((feature, index) => (
-              <div key={index} className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-8 hover:bg-white/15 transition-all group">
-                <div className="w-16 h-16 bg-gradient-primary rounded-xl mb-6 flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <feature.icon className="w-8 h-8 text-white" />
+            ].map((service, index) => (
+              <Card key={index} className="glass-card p-6 hover-lift hover-glow group">
+                <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <service.icon className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold mb-4 text-white leading-tight">{feature.title}</h3>
-                <p className="text-gray-300 mb-6 leading-relaxed">{feature.description}</p>
-                <Button variant="outline" className="border-white/30 text-white hover:bg-white/10 hover:border-white/50">
-                  MORE INFO <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-              </div>
+                <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
+                <p className="text-muted-foreground">{service.description}</p>
+              </Card>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section id="services" className="section bg-gradient-dark text-white">
-        <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Left Gradient Card */}
-            <div className="lg:col-span-1">
-              <div className="bg-gradient-primary rounded-2xl p-8 h-full flex flex-col justify-center">
-                <Badge className="mb-4 bg-white/20 text-white border-white/30 w-fit">
-                  OUR SERVICES
-                </Badge>
-                <h2 className="text-3xl font-bold mb-6 text-white leading-tight">
-                  Our creative & digital agency services
-                </h2>
-                <Button className="bg-white/20 text-white border-white/30 hover:bg-white/30 w-fit">
-                  See All
-                </Button>
-              </div>
-            </div>
-            
-            {/* Service Cards Grid */}
-            <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
-              {[
-                {
-                  icon: Code,
-                  title: "Web Development",
-                  category: "SOFTWARE",
-                  description: "Custom web applications built with modern technologies"
-                },
-                {
-                  icon: MessageSquare,
-                  title: "Social Marketing",
-                  category: "MEDIA", 
-                  description: "Strategic social media campaigns that drive engagement"
-                },
-                {
-                  icon: Monitor,
-                  title: "App Development", 
-                  category: "SOFTWARE",
-                  description: "Mobile and desktop applications for all platforms"
-                },
-                {
-                  icon: Search,
-                  title: "SEO Optimization",
-                  category: "OPTIMIZED",
-                  description: "Search engine optimization for better visibility"
-                },
-                {
-                  icon: Megaphone,
-                  title: "Brand Marketing",
-                  category: "ADVERTISEMENT", 
-                  description: "Complete brand identity and marketing solutions"
-                },
-                {
-                  icon: Target,
-                  title: "Digital Marketing",
-                  category: "AGENCY",
-                  description: "Comprehensive digital marketing strategies"
-                }
-              ].map((service, index) => (
-                <div key={index} className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6 hover:bg-white/15 transition-all group">
-                  <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                    <service.icon className="w-6 h-6 text-white" />
-                  </div>
-                  <p className="text-primary-glow text-sm font-medium mb-2">{service.category}</p>
-                  <h3 className="text-lg font-semibold mb-3 text-white">{service.title}</h3>
-                  <p className="text-gray-300 text-sm">{service.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Grow Business Section */}
-      <section className="section bg-gradient-dark text-white">
-        <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Left Content */}
-            <div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-8 text-white leading-tight">
-                Grow business with creative ideas
-              </h2>
-              
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center mt-1 flex-shrink-0">
-                    <CheckCircle className="w-4 h-4 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2 text-white">Professional Agency</h3>
-                    <p className="text-gray-300">
-                      Comprehensive digital solutions with modern technologies and creative expertise to elevate your brand presence.
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-4">
-                  <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center mt-1 flex-shrink-0">
-                    <CheckCircle className="w-4 h-4 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2 text-white">Solutions Provider</h3>
-                    <p className="text-gray-300">
-                      Expert consultation and tailored digital solutions that drive measurable results for your business growth.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            {/* Right Content */}
-            <div className="text-center lg:text-right">
-              <div className="mb-8">
-                <h3 className="text-lg text-gray-300 mb-4">We have worked for you</h3>
-                <div className="text-6xl md:text-8xl font-bold text-white/20 tracking-widest">
-                  SINCE 2023
-                </div>
-              </div>
-              
-              {/* Workspace Visual Placeholder */}
-              <div className="bg-gradient-primary/20 rounded-2xl p-8 backdrop-blur-lg border border-white/20">
-                <div className="w-16 h-16 bg-gradient-primary rounded-xl mx-auto mb-4 flex items-center justify-center">
-                  <Settings className="w-8 h-8 text-white" />
-                </div>
-                <h4 className="text-lg font-semibold text-white mb-2">Modern Workspace</h4>
-                <p className="text-gray-300 text-sm">
-                  Cutting-edge development environment with the latest tools and technologies
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -463,107 +333,6 @@ const Index = () => {
                 <p className="text-muted-foreground text-sm">{step.description}</p>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Our Digital Experience Section */}
-      <section className="section bg-gradient-dark text-white">
-        <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            {/* Left Content */}
-            <div>
-              <Badge className="mb-4 bg-primary/20 text-primary-glow border-primary/30">
-                OUR DIGITAL EXPERIENCE
-              </Badge>
-              <h2 className="text-4xl md:text-5xl font-bold mb-8 text-white leading-tight">
-                Leading the best digital agency in Sri Lanka
-              </h2>
-              
-              <div className="space-y-4 mb-8">
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 text-primary" />
-                  <span className="text-white">Professional staff</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 text-primary" />
-                  <span className="text-white">100% Satisfaction guarantee</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 text-primary" />
-                  <span className="text-white">Innovative ideas & solutions</span>
-                </div>
-              </div>
-              
-              {/* Progress Circles */}
-              <div className="grid grid-cols-2 gap-8 mb-8">
-                <div className="text-center">
-                  <div className="relative w-24 h-24 mx-auto mb-4">
-                    <svg className="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
-                      <circle cx="50" cy="50" r="40" stroke="rgba(255,255,255,0.2)" strokeWidth="8" fill="none" />
-                      <circle cx="50" cy="50" r="40" stroke="hsl(var(--primary))" strokeWidth="8" fill="none" 
-                        strokeDasharray={`${2 * Math.PI * 40}`} strokeDashoffset={`${2 * Math.PI * 40 * (1 - 0.85)}`}
-                        className="transition-all duration-1000" />
-                    </svg>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-2xl font-bold text-primary">85%</span>
-                    </div>
-                  </div>
-                  <h4 className="font-semibold text-white">Company Growth</h4>
-                </div>
-                
-                <div className="text-center">
-                  <div className="relative w-24 h-24 mx-auto mb-4">
-                    <svg className="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
-                      <circle cx="50" cy="50" r="40" stroke="rgba(255,255,255,0.2)" strokeWidth="8" fill="none" />
-                      <circle cx="50" cy="50" r="40" stroke="hsl(var(--primary))" strokeWidth="8" fill="none" 
-                        strokeDasharray={`${2 * Math.PI * 40}`} strokeDashoffset={`${2 * Math.PI * 40 * (1 - 0.98)}`}
-                        className="transition-all duration-1000" />
-                    </svg>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-2xl font-bold text-primary">98%</span>
-                    </div>
-                  </div>
-                  <h4 className="font-semibold text-white">Satisfied Clients</h4>
-                </div>
-              </div>
-            </div>
-            
-            {/* Right Content - FAQ */}
-            <div className="space-y-4">
-              {[
-                {
-                  question: "How long have you been in business?",
-                  answer: "Semantix Labs was founded in 2023 with a vision to make technology accessible to all. Despite being relatively new, our team brings years of collective experience in web development, digital marketing, and creative design."
-                },
-                {
-                  question: "What makes your approach different?",
-                  answer: "We focus on building long-term relationships with our clients, providing personalized solutions that grow with your business. Our Sri Lankan roots combined with global standards ensure quality at competitive rates."
-                },
-                {
-                  question: "Do you work with international clients?",
-                  answer: "Yes, while we're based in Colombo, Sri Lanka, we work with clients globally. Our diverse portfolio includes businesses from various countries and industries."
-                }
-              ].map((faq, index) => {
-                const [isOpen, setIsOpen] = React.useState(false);
-                return (
-                  <div key={index} className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl overflow-hidden">
-                    <button
-                      onClick={() => setIsOpen(!isOpen)}
-                      className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
-                    >
-                      <h4 className="font-semibold text-white">{faq.question}</h4>
-                      {isOpen ? <ChevronUp className="w-5 h-5 text-primary" /> : <ChevronDown className="w-5 h-5 text-primary" />}
-                    </button>
-                    {isOpen && (
-                      <div className="px-6 pb-6">
-                        <p className="text-gray-300 leading-relaxed">{faq.answer}</p>
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
           </div>
         </div>
       </section>
