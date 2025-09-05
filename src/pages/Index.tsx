@@ -21,7 +21,15 @@ import {
   ExternalLink,
   CheckCircle,
   Menu,
-  X
+  X,
+  Globe,
+  Megaphone,
+  Monitor,
+  Settings,
+  TrendingUp,
+  Award,
+  ChevronDown,
+  ChevronUp
 } from 'lucide-react';
 import SemanixLogo from '@/components/SemanixLogo';
 
@@ -85,112 +93,66 @@ const Index = () => {
         )}
       </nav>
 
-      {/* Hero Section - Split Screen Layout */}
-      <section className="min-h-screen flex pt-20">
-        {/* Left Panel - Dark */}
-        <div className="w-full lg:w-1/2 bg-gradient-dark flex flex-col justify-center items-start p-8 lg:p-16 text-white">
-          <div className="max-w-lg">
-            <Badge className="mb-6 bg-primary/20 text-primary-glow border-primary/30 hover:bg-primary/30 transition-colors">
-              Sri Lankan Tech Excellence
-            </Badge>
-            <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
-              WEB & SOFTWARE
-              <br />
-              <span className="gradient-text bg-gradient-to-r from-primary-glow to-accent bg-clip-text text-transparent">
-                DEVELOPMENT
-              </span>
-              <br />
-              AGENCY
-            </h1>
-            <p className="text-lg text-gray-300 mb-8 leading-relaxed">
-              People do not buy goods and services. They buy relations, stories, and magic.
-            </p>
-            <p className="text-sm text-gray-400 mb-8">
-              - Seth Godin
-            </p>
+      {/* Hero Section - Full Width Horizontal Layout */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        {/* Background Video Container - Ready for video implementation */}
+        <div className="absolute inset-0 bg-gradient-dark">
+          {/* Video will go here */}
+          <div className="absolute inset-0 bg-black/40 z-10"></div>
+        </div>
+
+        {/* Content Container */}
+        <div className="relative z-20 container-custom">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center min-h-[80vh]">
             
-            {/* Client Logos */}
-            <div className="flex flex-wrap items-center gap-6 opacity-60">
-              {["Dinemore", "KeKu", "Mingle Box", "CARE SL", "HuraOman"].map((client, index) => (
-                <div key={index} className="text-sm font-medium">
-                  {client}
-                </div>
-              ))}
+            {/* Main Content - Left Side */}
+            <div className="lg:col-span-7 text-center lg:text-left">
+              <Badge className="mb-6 bg-primary/20 text-primary-glow border-primary/30 hover:bg-primary/30 transition-colors">
+                Sri Lankan Tech Excellence
+              </Badge>
+              
+              <h1 className="text-4xl lg:text-7xl xl:text-8xl font-bold mb-6 leading-tight text-white">
+                All in one
+                <br />
+                <span className="gradient-text bg-gradient-to-r from-primary-glow to-accent bg-clip-text text-transparent">
+                  Digital Service
+                </span>
+                <br />
+                Agency
+              </h1>
+              
+              <p className="text-lg lg:text-xl text-gray-300 mb-4 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                People do not buy goods and services. They buy relations, stories, and magic.
+              </p>
+              
+              <p className="text-sm text-gray-400 mb-8 max-w-2xl mx-auto lg:mx-0">
+                - Seth Godin
+              </p>
+              
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
+                <Button size="lg" className="btn-primary text-lg px-8 py-4">
+                  Start Your Project <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+            
+              </div>
+              
+              
             </div>
+
+            
           </div>
         </div>
 
-        {/* Right Panel - Light */}
-        <div className="hidden lg:flex w-1/2 bg-gradient-subtle flex-col justify-center p-16">
-          {/* Stats Section */}
-          <div className="mb-12">
-            <div className="grid grid-cols-3 gap-8 text-center mb-8">
-              <div>
-                <div className="text-4xl font-bold text-primary mb-2">50+</div>
-                <div className="text-sm text-muted-foreground">Projects done</div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold text-primary mb-2">416%</div>
-                <div className="text-sm text-muted-foreground">Facebook reach</div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold text-primary mb-2">100%</div>
-                <div className="text-sm text-muted-foreground">Client satisfaction</div>
-              </div>
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+          <div className="animate-bounce">
+            <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+              <div className="w-1 h-3 bg-white/60 rounded-full mt-2"></div>
             </div>
-          </div>
-
-          {/* Testimonial Card */}
-          <div className="glass-card p-6 rounded-xl mb-8">
-            <p className="text-muted-foreground mb-4 italic">
-              "Semantix Labs delivered exceptional results for our digital transformation. Their expertise and dedication made a real impact. Highly recommended!"
-            </p>
-            <div className="flex items-center">
-              <div className="w-10 h-10 bg-gradient-primary rounded-full mr-3"></div>
-              <div>
-                <div className="font-semibold text-sm">Rajesh Kumar</div>
-                <div className="text-xs text-muted-foreground">CEO Dynamic Group</div>
-              </div>
-            </div>
-          </div>
-
-          {/* CTA Section */}
-          <div className="glass-card p-6 rounded-xl">
-            <h3 className="text-xl font-bold mb-2">DISCUSS WITH OUR TEAM</h3>
-            <p className="text-sm text-muted-foreground mb-4">
-              We are passionate marketers and strategists dedicated to helping your business thrive online. Let's build your digital future together.
-            </p>
-            <Button className="btn-primary">
-              LEARN MORE
-            </Button>
           </div>
         </div>
       </section>
-
-      {/* Mobile Hero Content */}
-      <div className="lg:hidden bg-gradient-subtle py-16 px-4 mt-20">
-        <div className="container-custom max-w-2xl text-center">
-          {/* Stats */}
-          <div className="grid grid-cols-3 gap-6 mb-8">
-            <div>
-              <div className="text-3xl font-bold text-primary mb-1">50+</div>
-              <div className="text-xs text-muted-foreground">Projects</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-primary mb-1">416%</div>
-              <div className="text-xs text-muted-foreground">Growth</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-primary mb-1">100%</div>
-              <div className="text-xs text-muted-foreground">Satisfaction</div>
-            </div>
-          </div>
-          
-          <Button size="lg" className="btn-primary">
-            Start Your Project <ArrowRight className="w-5 h-5 ml-2" />
-          </Button>
-        </div>
-      </div>
 
       {/* About Section */}
       <section id="about" className="section bg-muted/30">
@@ -218,17 +180,89 @@ const Index = () => {
                 </div>
               </div>
             </div>
-            <div className="glass-card p-8 rounded-2xl hover-lift">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-gradient-primary rounded-xl mx-auto mb-4 flex items-center justify-center">
-                  <Zap className="w-8 h-8 text-white" />
+            {/* Stats Grid */}
+              <div className="grid grid-cols-3 gap-6 text-center">
+                <div className="glass-card p-4 rounded-xl">
+                  <div className="text-3xl lg:text-4xl font-bold text-primary mb-2">50+</div>
+                  <div className="text-xs lg:text-sm gradient/80">Projects done</div>
                 </div>
-                <h3 className="text-xl font-semibold mb-2">Innovation First</h3>
-                <p className="text-muted-foreground">
-                  We leverage cutting-edge technologies to deliver solutions that exceed expectations and drive real business results.
-                </p>
+                <div className="glass-card p-4 rounded-xl">
+                  <div className="text-3xl lg:text-4xl font-bold text-primary mb-2">416%</div>
+                  <div className="text-xs lg:text-sm gradient/80">Facebook reach</div>
+                </div>
+                <div className="glass-card p-4 rounded-xl">
+                  <div className="text-3xl lg:text-4xl font-bold text-primary mb-2">100%</div>
+                  <div className="text-xs lg:text-sm gradient/80">Client satisfaction</div>
+                </div>
               </div>
-            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Features Section */}
+      <section className="section relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-[#5856D6] to-[#00C9A7]"></div>
+        
+        <div className="relative z-10 container-custom">
+          <div className="text-center mb-16">
+            <Badge className="mb-4 bg-white/20 text-white border-white/30">
+              OUR FEATURES
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+              The unique qualities that make Semantix Labs special.
+            </h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                icon: "cube",
+                title: "Innovating products and solutions within your time and budget.",
+                description: "We deliver cutting-edge technology solutions that align perfectly with your timeline and budget constraints."
+              },
+              {
+                icon: "sphere",
+                title: "World-class development with pixel-perfect user interface designs.",
+                description: "Our development team creates stunning, responsive interfaces that provide exceptional user experiences."
+              },
+              {
+                icon: "cylinder",
+                title: "Strategic, performance-driven, and comprehensive digital marketing.",
+                description: "Data-driven marketing strategies that boost your online presence and drive measurable business growth."
+              }
+            ].map((feature, index) => (
+              <div key={index} className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-8 hover:bg-white/15 transition-all group">
+                <div className="w-16 h-16 mb-6 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  {/* Geometric Icons */}
+                  {feature.icon === "cube" && (
+                    <div className="w-12 h-12 relative">
+                      <div className="absolute inset-0 border-2 border-cyan-400 transform rotate-12 rounded-lg"></div>
+                      <div className="absolute inset-1 border-2 border-cyan-300 transform -rotate-12 rounded-lg"></div>
+                      <div className="absolute inset-2 bg-cyan-400/30 rounded-lg"></div>
+                    </div>
+                  )}
+                  {feature.icon === "sphere" && (
+                    <div className="w-12 h-12 relative">
+                      <div className="absolute inset-0 border-2 border-green-400 rounded-full"></div>
+                      <div className="absolute inset-1 border-2 border-green-300 rounded-full transform rotate-45"></div>
+                      <div className="absolute inset-3 bg-green-400/30 rounded-full"></div>
+                    </div>
+                  )}
+                  {feature.icon === "cylinder" && (
+                    <div className="w-12 h-12 relative flex items-center justify-center">
+                      <div className="w-10 h-8 border-2 border-pink-400 rounded-full"></div>
+                      <div className="absolute w-6 h-10 border-2 border-pink-400 border-t-0 border-b-0 rounded-b-lg"></div>
+                      <div className="absolute w-6 h-2 bg-pink-400/30 rounded-full top-2"></div>
+                    </div>
+                  )}
+                </div>
+                <h3 className="text-xl font-semibold mb-4 text-white leading-tight">{feature.title}</h3>
+                <p className="text-white/80 mb-6 leading-relaxed">{feature.description}</p>
+                <Button variant="ghost" className="text-white hover:bg-white/10 hover:text-white p-0 h-auto font-medium">
+                  MORE INFO <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -290,6 +324,56 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Grow Business Section */}
+      <section className="section bg-gradient-dark text-white">
+        <div className="container-custom">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Left Content */}
+            <div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-8 text-white leading-tight">
+                Grow business with creative ideas
+              </h2>
+              
+              <div className="space-y-6">
+                <div className="flex items-start space-x-4">
+                  <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center mt-1 flex-shrink-0">
+                    <CheckCircle className="w-4 h-4 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2 text-white">Professional Agency</h3>
+                    <p className="text-gray-300">
+                      Comprehensive digital solutions with modern technologies and creative expertise to elevate your brand presence.
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-4">
+                  <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center mt-1 flex-shrink-0">
+                    <CheckCircle className="w-4 h-4 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2 text-white">Solutions Provider</h3>
+                    <p className="text-gray-300">
+                      Expert consultation and tailored digital solutions that drive measurable results for your business growth.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Right Content */}
+            <div className="text-center lg:text-right">
+              <div className="mb-8">
+                <h3 className="text-lg text-gray-300 mb-4">We have worked for you</h3>
+                <div className="text-6xl md:text-8xl font-bold text-white/20 tracking-widest">
+                  SINCE 2023
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* How We Work Section */}
       <section className="section bg-muted/30">
         <div className="container-custom">
@@ -333,6 +417,107 @@ const Index = () => {
                 <p className="text-muted-foreground text-sm">{step.description}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Digital Experience Section */}
+      <section className="section bg-gradient-dark text-white">
+        <div className="container-custom">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            {/* Left Content */}
+            <div>
+              <Badge className="mb-4 bg-primary/20 text-primary-glow border-primary/30">
+                OUR DIGITAL EXPERIENCE
+              </Badge>
+              <h2 className="text-4xl md:text-5xl font-bold mb-8 text-white leading-tight">
+                Leading the best digital agency in Sri Lanka
+              </h2>
+              
+              <div className="space-y-4 mb-8">
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 text-primary" />
+                  <span className="text-white">Professional staff</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 text-primary" />
+                  <span className="text-white">100% Satisfaction guarantee</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 text-primary" />
+                  <span className="text-white">Innovative ideas & solutions</span>
+                </div>
+              </div>
+              
+              {/* Progress Circles */}
+              <div className="grid grid-cols-2 gap-8 mb-8">
+                <div className="text-center">
+                  <div className="relative w-24 h-24 mx-auto mb-4">
+                    <svg className="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+                      <circle cx="50" cy="50" r="40" stroke="rgba(255,255,255,0.2)" strokeWidth="8" fill="none" />
+                      <circle cx="50" cy="50" r="40" stroke="hsl(var(--primary))" strokeWidth="8" fill="none" 
+                        strokeDasharray={`${2 * Math.PI * 40}`} strokeDashoffset={`${2 * Math.PI * 40 * (1 - 0.85)}`}
+                        className="transition-all duration-1000" />
+                    </svg>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="text-2xl font-bold text-primary">85%</span>
+                    </div>
+                  </div>
+                  <h4 className="font-semibold text-white">Company Growth</h4>
+                </div>
+                
+                <div className="text-center">
+                  <div className="relative w-24 h-24 mx-auto mb-4">
+                    <svg className="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+                      <circle cx="50" cy="50" r="40" stroke="rgba(255,255,255,0.2)" strokeWidth="8" fill="none" />
+                      <circle cx="50" cy="50" r="40" stroke="hsl(var(--primary))" strokeWidth="8" fill="none" 
+                        strokeDasharray={`${2 * Math.PI * 40}`} strokeDashoffset={`${2 * Math.PI * 40 * (1 - 0.98)}`}
+                        className="transition-all duration-1000" />
+                    </svg>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="text-2xl font-bold text-primary">98%</span>
+                    </div>
+                  </div>
+                  <h4 className="font-semibold text-white">Satisfied Clients</h4>
+                </div>
+              </div>
+            </div>
+            
+            {/* Right Content - FAQ */}
+            <div className="space-y-4">
+              {[
+                {
+                  question: "How long have you been in business?",
+                  answer: "Semantix Labs was founded in 2023 with a vision to make technology accessible to all. Despite being relatively new, our team brings years of collective experience in web development, digital marketing, and creative design."
+                },
+                {
+                  question: "What makes your approach different?",
+                  answer: "We focus on building long-term relationships with our clients, providing personalized solutions that grow with your business. Our Sri Lankan roots combined with global standards ensure quality at competitive rates."
+                },
+                {
+                  question: "Do you work with international clients?",
+                  answer: "Yes, while we're based in Colombo, Sri Lanka, we work with clients globally. Our diverse portfolio includes businesses from various countries and industries."
+                }
+              ].map((faq, index) => {
+                const [isOpen, setIsOpen] = React.useState(false);
+                return (
+                  <div key={index} className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl overflow-hidden">
+                    <button
+                      onClick={() => setIsOpen(!isOpen)}
+                      className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
+                    >
+                      <h4 className="font-semibold text-white">{faq.question}</h4>
+                      {isOpen ? <ChevronUp className="w-5 h-5 text-primary" /> : <ChevronDown className="w-5 h-5 text-primary" />}
+                    </button>
+                    {isOpen && (
+                      <div className="px-6 pb-6">
+                        <p className="text-gray-300 leading-relaxed">{faq.answer}</p>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
@@ -421,7 +606,7 @@ const Index = () => {
                     <Phone className="w-5 h-5 text-primary" />
                     <div>
                       <div className="font-medium">Phone</div>
-                      <div className="text-muted-foreground">+94 77 522 2493</div>
+                      <div className="text-muted-foreground">+94 72 813 3311</div>
                     </div>
                   </div>
                   <div className="flex items-center space-x-3">
@@ -440,11 +625,13 @@ const Index = () => {
                   <div>
                     <div className="font-semibold">S. Shobian</div>
                     <div className="text-sm text-muted-foreground">Chief Executive Officer</div>
+                    <div className="text-sm text-primary">+94 77 522 2493</div>
                     <div className="text-sm text-primary">s.shobian@semantixlabs.com</div>
                   </div>
                   <div>
                     <div className="font-semibold">Umair Shukri</div>
                     <div className="text-sm text-muted-foreground">Chief Operating Officer</div>
+                    <div className="text-sm text-primary">+94 76 882 9986</div>
                     <div className="text-sm text-primary">umairshukri@semantixlabs.com</div>
                   </div>
                 </div>
@@ -486,11 +673,11 @@ const Index = () => {
               <SemanixLogo className="h-8 w-auto" theme="light" />
             </div>
             <div className="text-center md:text-right">
-              <div className="text-sm text-muted-foreground mb-2">
+              <div className="text-sm  mb-2">
                 www.semantixlabs.com
               </div>
-              <div className="text-sm text-muted-foreground">
-                © 2024 Semantix Labs. All rights reserved.
+              <div className="text-sm ">
+                © 2026 Semantix Labs. All rights reserved.
               </div>
             </div>
           </div>
