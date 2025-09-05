@@ -250,10 +250,12 @@ const Index = () => {
       </section>
 
       {/* Our Features Section */}
-      <section className="section bg-gradient-dark text-white">
-        <div className="container-custom">
+      <section className="section relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-[#5856D6] to-[#00C9A7]"></div>
+        
+        <div className="relative z-10 container-custom">
           <div className="text-center mb-16">
-            <Badge className="mb-4 bg-primary/20 text-primary-glow border-primary/30">
+            <Badge className="mb-4 bg-white/20 text-white border-white/30">
               OUR FEATURES
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
@@ -264,28 +266,49 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                icon: Zap,
+                icon: "cube",
                 title: "Innovating products and solutions within your time and budget.",
                 description: "We deliver cutting-edge technology solutions that align perfectly with your timeline and budget constraints."
               },
               {
-                icon: Globe,
+                icon: "sphere",
                 title: "World-class development with pixel-perfect user interface designs.",
                 description: "Our development team creates stunning, responsive interfaces that provide exceptional user experiences."
               },
               {
-                icon: TrendingUp,
+                icon: "cylinder",
                 title: "Strategic, performance-driven, and comprehensive digital marketing.",
                 description: "Data-driven marketing strategies that boost your online presence and drive measurable business growth."
               }
             ].map((feature, index) => (
               <div key={index} className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-8 hover:bg-white/15 transition-all group">
-                <div className="w-16 h-16 bg-gradient-primary rounded-xl mb-6 flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <feature.icon className="w-8 h-8 text-white" />
+                <div className="w-16 h-16 mb-6 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  {/* Geometric Icons */}
+                  {feature.icon === "cube" && (
+                    <div className="w-12 h-12 relative">
+                      <div className="absolute inset-0 border-2 border-cyan-400 transform rotate-12 rounded-lg"></div>
+                      <div className="absolute inset-1 border-2 border-cyan-300 transform -rotate-12 rounded-lg"></div>
+                      <div className="absolute inset-2 bg-cyan-400/30 rounded-lg"></div>
+                    </div>
+                  )}
+                  {feature.icon === "sphere" && (
+                    <div className="w-12 h-12 relative">
+                      <div className="absolute inset-0 border-2 border-green-400 rounded-full"></div>
+                      <div className="absolute inset-1 border-2 border-green-300 rounded-full transform rotate-45"></div>
+                      <div className="absolute inset-3 bg-green-400/30 rounded-full"></div>
+                    </div>
+                  )}
+                  {feature.icon === "cylinder" && (
+                    <div className="w-12 h-12 relative flex items-center justify-center">
+                      <div className="w-10 h-8 border-2 border-pink-400 rounded-full"></div>
+                      <div className="absolute w-6 h-10 border-2 border-pink-400 border-t-0 border-b-0 rounded-b-lg"></div>
+                      <div className="absolute w-6 h-2 bg-pink-400/30 rounded-full top-2"></div>
+                    </div>
+                  )}
                 </div>
                 <h3 className="text-xl font-semibold mb-4 text-white leading-tight">{feature.title}</h3>
-                <p className="text-gray-300 mb-6 leading-relaxed">{feature.description}</p>
-                <Button variant="outline" className="border-white/30 text-white hover:bg-white/10 hover:border-white/50">
+                <p className="text-white/80 mb-6 leading-relaxed">{feature.description}</p>
+                <Button variant="ghost" className="text-white hover:bg-white/10 hover:text-white p-0 h-auto font-medium">
                   MORE INFO <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </div>
