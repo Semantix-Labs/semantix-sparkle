@@ -47,32 +47,28 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-subtle">
       {/* Floating Navigation */}
-      <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50">
-        <div className="glass-card px-6 py-3 rounded-full shadow-elegant">
-          <div className="flex items-center space-x-8">
-            {/* Logo */}
-            <SemanixLogo className="h-6 w-auto" theme="dark" />
-            
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-6">
-              <button onClick={() => scrollToSection('about')} className="text-foreground/80 hover:text-primary transition-colors text-sm font-medium">About</button>
-              <button onClick={() => scrollToSection('services')} className="text-foreground/80 hover:text-primary transition-colors text-sm font-medium">Services</button>
-              <button onClick={() => scrollToSection('clients')} className="text-foreground/80 hover:text-primary transition-colors text-sm font-medium">Clients</button>
-              <button onClick={() => scrollToSection('contact')} className="text-foreground/80 hover:text-primary transition-colors text-sm font-medium">Contact</button>
-              <Button size="sm" className="btn-primary px-4 py-2 text-sm">
-                Start Project
-              </Button>
-            </div>
+      <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[50vw] max-w-6xl">
+    <div className="glass-card rounded-full shadow-elegant px-8 py-3">
+      {/* 3-column layout: [logo | center menu | CTA] */}
+      <div className="grid grid-cols-[auto,1fr,auto] items-center">
+        {/* Logo (left) */}
+        <SemanixLogo className="h-12 w-auto" theme="dark" />
 
-            {/* Mobile menu button */}
-            <div className="md:hidden">
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              >
-                {isMobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
-              </Button>
+        {/* Menu (center) */}
+        <div className="hidden md:flex justify-center">
+          <div className="flex items-center gap-8">
+            <button onClick={() => scrollToSection('about')} className="text-foreground/80 hover:text-primary transition-colors text-sm font-medium">About</button>
+            <button onClick={() => scrollToSection('services')} className="text-foreground/80 hover:text-primary transition-colors text-sm font-medium">Services</button>
+            <button onClick={() => scrollToSection('clients')} className="text-foreground/80 hover:text-primary transition-colors text-sm font-medium">Clients</button>
+            <button onClick={() => scrollToSection('contact')} className="text-foreground/80 hover:text-primary transition-colors text-sm font-medium">Contact</button>
+          </div>
+        </div>
+
+        {/* CTA (right) */}
+        <div className="justify-self-end">
+          <Button size="sm" className="btn-primary px-4 py-2 text-sm">
+            Start Project
+          </Button>
             </div>
           </div>
         </div>
