@@ -101,8 +101,8 @@ const handler = async (req: Request): Promise<Response> => {
     console.log("Contact submission saved to database:", dbData.id);
 
     // Prepare email content
-    const emailTo = Deno.env.get("EMAIL_TO") || "info@semantixlabs.com";
-    const emailCC = Deno.env.get("EMAIL_CC") || "";
+    const emailTo = Deno.env.get("EMAIL_TO") || "s.shobian@semantixlabs.com";
+    const emailCC = Deno.env.get("EMAIL_CC") || "s.shobian@semantixlabs.com,umairshukri@semantixlabs.com";
     const emailFrom = Deno.env.get("EMAIL_FROM") || "Semantix Labs <onboarding@resend.dev>";
 
     const ccEmails = emailCC ? emailCC.split(",").map(email => email.trim()).filter(email => email) : [];
