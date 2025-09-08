@@ -32,6 +32,7 @@ import {
   ChevronUp
 } from 'lucide-react';
 import SemanixLogo from '@/components/SemanixLogo';
+import { ContactForm } from '@/components/ContactForm';
 
 const Index = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
@@ -646,29 +647,7 @@ const Index = () => {
               </div>
             </div>
 
-            <div className="glass-card p-8 rounded-xl">
-              <h3 className="text-xl font-semibold mb-6">Start Your Project</h3>
-              <form className="space-y-6">
-                <div>
-                  <Input placeholder="Your Name" className="w-full" />
-                </div>
-                <div>
-                  <Input type="email" placeholder="Your Email" className="w-full" />
-                </div>
-                <div>
-                  <Input placeholder="Project Budget" className="w-full" />
-                </div>
-                <div>
-                  <Textarea 
-                    placeholder="Tell us about your project..." 
-                    className="w-full min-h-[120px] resize-none"
-                  />
-                </div>
-                <Button className="w-full btn-primary text-lg py-3">
-                  Send Message <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
-              </form>
-            </div>
+            <ContactForm />
           </div>
         </div>
       </section>
