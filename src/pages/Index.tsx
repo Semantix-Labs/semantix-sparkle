@@ -34,6 +34,31 @@ import {
 import SemanixLogo from '@/components/SemanixLogo';
 import { ContactForm } from '@/components/ContactForm';
 
+// Client Logos
+import bambaLogo from '@/assets/Semantix Client Logos/Semantix labs Client - Bamba 325.png';
+import boxitLogo from '@/assets/Semantix Client Logos/Semantix labs Client - Boxit.png';
+import careSlLogo from '@/assets/Semantix Client Logos/Semantix labs Client - Care SL.png';
+import cuddlesLogo from '@/assets/Semantix Client Logos/Semantix labs Client - Cuddles and co.png';
+import dinemoreLogo from '@/assets/Semantix Client Logos/Semantix labs Client - Dinemore.png';
+import huraOmanLogo from '@/assets/Semantix Client Logos/Semantix labs Client - Hura Oman.png';
+import kekuLogo from '@/assets/Semantix Client Logos/Semantix labs Client - KEKU.png';
+import mingleBoxLogo from '@/assets/Semantix Client Logos/Semantix labs Client - Mingle Box.png';
+import onBoardTradingLogo from '@/assets/Semantix Client Logos/Semantix labs Client - On Board Trading Qatar.png';
+import rfDesignsLogo from '@/assets/Semantix Client Logos/Semantix labs Client - RF Designs.png';
+import riverViewLogo from '@/assets/Semantix Client Logos/Semantix labs Client - River View Villlas.png';
+
+// Tech Stack Logos
+import figmaLogo from '@/assets/Tech Stack Logos/Semantix labs Tech product - Figma.png';
+import googleAdsLogo from '@/assets/Tech Stack Logos/Semantix labs Tech product - Google Ads.png';
+import gcpLogo from '@/assets/Tech Stack Logos/Semantix labs Tech product - Google Cloud Platform.png';
+import metaLogo from '@/assets/Tech Stack Logos/Semantix labs Tech product - Meta platforms.png';
+import nextJsLogo from '@/assets/Tech Stack Logos/Semantix labs Tech product - Next JS.png';
+import reactLogo from '@/assets/Tech Stack Logos/Semantix labs Tech product - React Js.png';
+import azureLogo from '@/assets/Tech Stack Logos/Semantix labs Tech product -Azure.png';
+import javascriptLogo from '@/assets/Tech Stack Logos/Semantix labs Tech product -Javascript.png';
+import wordpressLogo from '@/assets/Tech Stack Logos/Semantix labs Tech product -Wordpress.png';
+import techLogo10 from '@/assets/Tech Stack Logos/10.png';
+
 const Index = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
@@ -543,19 +568,29 @@ const Index = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-8 items-center justify-center">
+          <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-4 lg:gap-6 items-center justify-center">
             {[
-              { name: "JavaScript", color: "bg-yellow-500" },
-              { name: "React", color: "bg-blue-500" },
-              { name: "Next.js", color: "bg-gray-900" },
-              { name: "Figma", color: "bg-purple-500" },
-              { name: "Meta", color: "bg-blue-600" },
-              { name: "WordPress", color: "bg-blue-700" },
-              { name: "Azure", color: "bg-blue-400" }
+              { name: "JavaScript", logo: javascriptLogo },
+              { name: "React", logo: reactLogo },
+              { name: "Next.js", logo: nextJsLogo },
+              { name: "Figma", logo: figmaLogo },
+              { name: "Meta", logo: metaLogo },
+              { name: "WordPress", logo: wordpressLogo },
+              { name: "Azure", logo: azureLogo },
+              { name: "Google Cloud", logo: gcpLogo },
+              { name: "Google Ads", logo: googleAdsLogo }
             ].map((tech, index) => (
-              <div key={index} className="glass-card p-4 rounded-lg hover-lift text-center group">
-                <div className={`w-12 h-12 ${tech.color} rounded-lg mx-auto mb-2 group-hover:scale-110 transition-transform`}></div>
-                <div className="text-sm font-medium">{tech.name}</div>
+              <div key={index} className="glass-card p-3 lg:p-4 rounded-lg hover-lift text-center group">
+                <div className="h-12 lg:h-16 flex items-center justify-center mb-2">
+                  <img 
+                    src={tech.logo} 
+                    alt={`${tech.name} logo`}
+                    className="max-h-full max-w-full object-contain group-hover:scale-110 transition-transform duration-300"
+                  />
+                </div>
+                <div className="text-xs lg:text-sm font-medium text-foreground/80 group-hover:text-foreground transition-colors">
+                  {tech.name}
+                </div>
               </div>
             ))}
           </div>
@@ -574,13 +609,31 @@ const Index = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 lg:gap-8 items-center">
             {[
-              "Dinemore", "KeKu", "Mingle Box", "CARE SL", "HuraOman",
-              "Box It", "OnBoard Trading", "River View Villas", "Bamba", "Cuddles & Co"
+              { name: "Dinemore", logo: dinemoreLogo },
+              { name: "KEKU", logo: kekuLogo },
+              { name: "Mingle Box", logo: mingleBoxLogo },
+              { name: "Care SL", logo: careSlLogo },
+              { name: "Hura Oman", logo: huraOmanLogo },
+              { name: "Boxit", logo: boxitLogo },
+              { name: "OnBoard Trading", logo: onBoardTradingLogo },
+              { name: "River View Villas", logo: riverViewLogo },
+              { name: "Bamba 325", logo: bambaLogo },
+              { name: "Cuddles & Co", logo: cuddlesLogo },
+              { name: "RF Designs", logo: rfDesignsLogo }
             ].map((client, index) => (
-              <div key={index} className="glass-card p-6 rounded-lg hover-lift text-center">
-                <div className="font-semibold text-foreground/80">{client}</div>
+              <div key={index} className="glass-card p-4 lg:p-6 rounded-lg hover-lift text-center group">
+                <div className="h-16 lg:h-20 flex items-center justify-center mb-3">
+                  <img 
+                    src={client.logo} 
+                    alt={`${client.name} logo`}
+                    className="max-h-full max-w-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300 group-hover:scale-110"
+                  />
+                </div>
+                <div className="text-xs lg:text-sm font-medium text-foreground/70 group-hover:text-foreground transition-colors">
+                  {client.name}
+                </div>
               </div>
             ))}
           </div>
