@@ -36,10 +36,33 @@ export const ContactForm = () => {
         throw error;
       }
 
-      toast({
-        title: "Message sent successfully!",
-        description: "Thank you for contacting us. We'll get back to you soon.",
-      });
+      // Check email delivery status
+      const { emailStatus } = result;
+      
+      if (emailStatus?.adminEmailSent && emailStatus?.userEmailSent) {
+        toast({
+          title: "Message sent successfully!",
+          description: "Thank you for contacting us. We'll get back to you soon.",
+        });
+      } else if (emailStatus?.adminEmailSent && !emailStatus?.userEmailSent) {
+        toast({
+          title: "Message received!",
+          description: "Your message was saved and we've been notified. However, we couldn't send you a confirmation email.",
+          variant: "default",
+        });
+      } else if (!emailStatus?.adminEmailSent && emailStatus?.userEmailSent) {
+        toast({
+          title: "Message sent with issues",
+          description: "Your message was saved and you'll receive confirmation, but there was an issue notifying our team.",
+          variant: "default",
+        });
+      } else {
+        toast({
+          title: "Message saved!",
+          description: "Your message was saved successfully, though there were email delivery issues. We'll still get back to you!",
+          variant: "default",
+        });
+      }
 
       form.reset();
     } catch (error: any) {

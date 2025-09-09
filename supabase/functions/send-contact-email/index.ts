@@ -129,7 +129,10 @@ const handler = async (req: Request): Promise<Response> => {
       </ul>
     `;
 
-    // Send notification email
+    // Send notification email with retry logic
+    let adminEmailSent = false;
+    let adminEmailError = null;
+
     const emailPayload: any = {
       from: emailFrom,
       to: [emailTo],
@@ -141,18 +144,44 @@ const handler = async (req: Request): Promise<Response> => {
       emailPayload.cc = ccEmails;
     }
 
-    const emailResponse = await resend.emails.send(emailPayload);
-
-    if (emailResponse.error) {
-      console.error("Email sending error:", emailResponse.error);
-      // Don't fail the request if email fails, as the submission is already saved
-    } else {
-      console.log("Notification email sent successfully:", emailResponse.data?.id);
+    try {
+      const emailResponse = await resend.emails.send(emailPayload);
+      
+      if (emailResponse.error) {
+        console.error("Email sending error with CC:", emailResponse.error);
+        adminEmailError = emailResponse.error.message || "Failed to send admin notification";
+        
+        // Retry without CC if there were CC recipients
+        if (ccEmails.length > 0) {
+          console.log("Retrying admin email without CC...");
+          const retryPayload = { ...emailPayload };
+          delete retryPayload.cc;
+          
+          const retryResponse = await resend.emails.send(retryPayload);
+          if (retryResponse.error) {
+            console.error("Retry email also failed:", retryResponse.error);
+            adminEmailError = retryResponse.error.message || "Failed to send admin notification (retry also failed)";
+          } else {
+            console.log("Retry email sent successfully:", retryResponse.data?.id);
+            adminEmailSent = true;
+            adminEmailError = null;
+          }
+        }
+      } else {
+        console.log("Notification email sent successfully:", emailResponse.data?.id);
+        adminEmailSent = true;
+      }
+    } catch (error: any) {
+      console.error("Email sending exception:", error);
+      adminEmailError = error.message || "Failed to send admin notification";
     }
 
     // Send confirmation email to user
+    let userEmailSent = false;
+    let userEmailError = null;
+
     try {
-      await resend.emails.send({
+      const confirmationResponse = await resend.emails.send({
         from: emailFrom,
         to: [email],
         subject: "Thank you for contacting Semantix Labs!",
@@ -174,17 +203,30 @@ const handler = async (req: Request): Promise<Response> => {
           </p>
         `,
       });
-      console.log("Confirmation email sent to user");
-    } catch (confirmationError) {
-      console.error("Failed to send confirmation email:", confirmationError);
-      // Don't fail the request if confirmation email fails
+      
+      if (confirmationResponse.error) {
+        console.error("Failed to send confirmation email:", confirmationResponse.error);
+        userEmailError = confirmationResponse.error.message || "Failed to send confirmation email";
+      } else {
+        console.log("Confirmation email sent to user:", confirmationResponse.data?.id);
+        userEmailSent = true;
+      }
+    } catch (confirmationError: any) {
+      console.error("Confirmation email exception:", confirmationError);
+      userEmailError = confirmationError.message || "Failed to send confirmation email";
     }
 
     return new Response(
       JSON.stringify({ 
         success: true, 
         message: "Your message has been sent successfully!",
-        submissionId: dbData.id
+        submissionId: dbData.id,
+        emailStatus: {
+          adminEmailSent,
+          userEmailSent,
+          adminEmailError,
+          userEmailError
+        }
       }),
       {
         status: 200,
