@@ -11,9 +11,9 @@ import { useToast } from '@/hooks/use-toast';
 import { contactFormSchema, type ContactFormData } from '@/lib/validations';
 
 // EmailJS configuration - Replace these with your actual EmailJS IDs
-const EMAILJS_SERVICE_ID = 'your_service_id';
-const EMAILJS_TEMPLATE_ID = 'your_template_id';
-const EMAILJS_PUBLIC_KEY = 'your_public_key';
+const EMAILJS_SERVICE_ID = 'Service_p1h919r';
+const EMAILJS_TEMPLATE_ID = 'template_p33g5sj';
+const EMAILJS_PUBLIC_KEY = 'CRAmrq28QnM3736WD';
 
 export const ContactForm = () => {
   const { toast } = useToast();
