@@ -33,19 +33,24 @@ export const ContactForm = () => {
     setIsSubmitting(true);
     
     try {
-      // Send email using EmailJS
-      await emailjs.send(
+      console.log('Attempting to send email with EmailJS...');
+      
+      // Initialize EmailJS (in case it's not initialized)
+      emailjs.init(EMAILJS_PUBLIC_KEY);
+      
+      // Send email using EmailJS - remove to_email as it's handled in template
+      const result = await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
         {
-          from_name: data.name,
-          from_email: data.email,
+          name: data.name,
+          email: data.email,
           budget: data.budget || 'Not specified',
           message: data.message,
-          to_email: 'info@semantixlabs.com', // Replace with your email
-        },
-        EMAILJS_PUBLIC_KEY
+        }
       );
+
+      console.log('EmailJS result:', result);
 
       toast({
         title: "Message sent successfully!",
@@ -54,10 +59,21 @@ export const ContactForm = () => {
 
       form.reset();
     } catch (error: any) {
-      console.error('Error sending email:', error);
+      console.error('Detailed EmailJS error:', error);
+      console.error('Error status:', error.status);
+      console.error('Error text:', error.text);
+      
+      let errorMessage = "Something went wrong. Please try again later.";
+      
+      if (error.status === 400) {
+        errorMessage = "Invalid form data. Please check your inputs.";
+      } else if (error.status === 403) {
+        errorMessage = "Email service configuration error. Please contact support.";
+      }
+      
       toast({
         title: "Error sending message",
-        description: "Something went wrong. Please try again later.",
+        description: errorMessage,
         variant: "destructive",
       });
     } finally {
