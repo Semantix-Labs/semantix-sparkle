@@ -10,16 +10,15 @@ import emailjs from '@emailjs/browser';
 import { useToast } from '@/hooks/use-toast';
 import { contactFormSchema, type ContactFormData } from '@/lib/validations';
 
-// EmailJS configuration - Replace these with your actual EmailJS IDs
-const EMAILJS_SERVICE_ID = 'Service_p1h919r';
+const EMAILJS_SERVICE_ID = 'service_ax6b0em';
 const EMAILJS_TEMPLATE_ID = 'template_p33g5sj';
-const EMAILJS_PUBLIC_KEY = 'CRAmrq28QnM3736WD';
+const EMAILJS_PUBLIC_KEY = 'lPMS-HjD0ycHAuwSH';
 
 export const ContactForm = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = React.useState(false);
 
-  const form = useForm<ContactFormData>({
+  const formMethods = useForm<ContactFormData>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
       name: '',
@@ -29,25 +28,20 @@ export const ContactForm = () => {
     },
   });
 
+  const formRef = React.useRef<HTMLFormElement>(null);
+
   const onSubmit = async (data: ContactFormData) => {
+    if (!formRef.current) return;
     setIsSubmitting(true);
-    
+
     try {
       console.log('Attempting to send email with EmailJS...');
-      
-      // Initialize EmailJS (in case it's not initialized)
-      emailjs.init(EMAILJS_PUBLIC_KEY);
-      
-      // Send email using EmailJS - remove to_email as it's handled in template
-      const result = await emailjs.send(
+
+      const result = await emailjs.sendForm(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
-        {
-          name: data.name,
-          email: data.email,
-          budget: data.budget || 'Not specified',
-          message: data.message,
-        }
+        formRef.current,
+        EMAILJS_PUBLIC_KEY
       );
 
       console.log('EmailJS result:', result);
@@ -57,20 +51,17 @@ export const ContactForm = () => {
         description: "Thank you for contacting us. We'll get back to you soon.",
       });
 
-      form.reset();
+      formMethods.reset();
     } catch (error: any) {
       console.error('Detailed EmailJS error:', error);
-      console.error('Error status:', error.status);
-      console.error('Error text:', error.text);
-      
+
       let errorMessage = "Something went wrong. Please try again later.";
-      
       if (error.status === 400) {
         errorMessage = "Invalid form data. Please check your inputs.";
       } else if (error.status === 403) {
         errorMessage = "Email service configuration error. Please contact support.";
       }
-      
+
       toast({
         title: "Error sending message",
         description: errorMessage,
@@ -84,10 +75,10 @@ export const ContactForm = () => {
   return (
     <div className="glass-card p-8 rounded-xl">
       <h3 className="text-xl font-semibold mb-6">Start Your Project</h3>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+      <Form {...formMethods}>
+        <form ref={formRef} onSubmit={formMethods.handleSubmit(onSubmit)} className="space-y-6">
           <FormField
-            control={form.control}
+            control={formMethods.control}
             name="name"
             render={({ field }) => (
               <FormItem>
@@ -98,9 +89,8 @@ export const ContactForm = () => {
               </FormItem>
             )}
           />
-          
           <FormField
-            control={form.control}
+            control={formMethods.control}
             name="email"
             render={({ field }) => (
               <FormItem>
@@ -111,9 +101,8 @@ export const ContactForm = () => {
               </FormItem>
             )}
           />
-          
           <FormField
-            control={form.control}
+            control={formMethods.control}
             name="budget"
             render={({ field }) => (
               <FormItem>
@@ -124,15 +113,14 @@ export const ContactForm = () => {
               </FormItem>
             )}
           />
-          
           <FormField
-            control={form.control}
+            control={formMethods.control}
             name="message"
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Textarea 
-                    placeholder="Tell us about your project..." 
+                  <Textarea
+                    placeholder="Tell us about your project..."
                     className="min-h-[120px] resize-none"
                     {...field}
                   />
@@ -141,9 +129,8 @@ export const ContactForm = () => {
               </FormItem>
             )}
           />
-          
-          <Button 
-            type="submit" 
+          <Button
+            type="submit"
             className="w-full btn-primary text-lg py-3"
             disabled={isSubmitting}
           >
