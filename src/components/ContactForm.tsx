@@ -6,9 +6,14 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 import { ArrowRight, Loader2 } from 'lucide-react';
-import { supabase } from '@/integrations/supabase/client';
+import emailjs from '@emailjs/browser';
 import { useToast } from '@/hooks/use-toast';
 import { contactFormSchema, type ContactFormData } from '@/lib/validations';
+
+// EmailJS configuration - Replace these with your actual EmailJS IDs
+const EMAILJS_SERVICE_ID = 'your_service_id';
+const EMAILJS_TEMPLATE_ID = 'your_template_id';
+const EMAILJS_PUBLIC_KEY = 'your_public_key';
 
 export const ContactForm = () => {
   const { toast } = useToast();
@@ -28,48 +33,31 @@ export const ContactForm = () => {
     setIsSubmitting(true);
     
     try {
-      const { data: result, error } = await supabase.functions.invoke('send-contact-email', {
-        body: data,
+      // Send email using EmailJS
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: data.name,
+          from_email: data.email,
+          budget: data.budget || 'Not specified',
+          message: data.message,
+          to_email: 'info@semantixlabs.com', // Replace with your email
+        },
+        EMAILJS_PUBLIC_KEY
+      );
+
+      toast({
+        title: "Message sent successfully!",
+        description: "Thank you for contacting us. We'll get back to you soon.",
       });
-
-      if (error) {
-        throw error;
-      }
-
-      // Check email delivery status
-      const { emailStatus } = result;
-      
-      if (emailStatus?.adminEmailSent && emailStatus?.userEmailSent) {
-        toast({
-          title: "Message sent successfully!",
-          description: "Thank you for contacting us. We'll get back to you soon.",
-        });
-      } else if (emailStatus?.adminEmailSent && !emailStatus?.userEmailSent) {
-        toast({
-          title: "Message received!",
-          description: "Your message was saved and we've been notified. However, we couldn't send you a confirmation email.",
-          variant: "default",
-        });
-      } else if (!emailStatus?.adminEmailSent && emailStatus?.userEmailSent) {
-        toast({
-          title: "Message sent with issues",
-          description: "Your message was saved and you'll receive confirmation, but there was an issue notifying our team.",
-          variant: "default",
-        });
-      } else {
-        toast({
-          title: "Message saved!",
-          description: "Your message was saved successfully, though there were email delivery issues. We'll still get back to you!",
-          variant: "default",
-        });
-      }
 
       form.reset();
     } catch (error: any) {
-      console.error('Error submitting contact form:', error);
+      console.error('Error sending email:', error);
       toast({
         title: "Error sending message",
-        description: error.message || "Something went wrong. Please try again.",
+        description: "Something went wrong. Please try again later.",
         variant: "destructive",
       });
     } finally {
