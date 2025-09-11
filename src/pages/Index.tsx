@@ -661,7 +661,7 @@ const Index = () => {
                     <Mail className="w-5 h-5 text-primary" />
                     <div>
                       <div className="font-medium">Email</div>
-                      <div className="text-muted-foreground">hello@semantixlabs.com</div>
+                      <div className="text-muted-foreground">info@semantixlabs.com</div>
                     </div>
                   </div>
                   <div className="flex items-center space-x-3">
