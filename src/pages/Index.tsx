@@ -75,16 +75,16 @@ const Index = () => {
       {/* Floating Navigation */}
       <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95vw] sm:w-[85vw] md:w-[80vw] lg:w-[70vw] xl:w-[60vw] max-w-6xl">
         <div className="glass-card rounded-full shadow-elegant px-4 sm:px-6 md:px-8 py-3">
-          {/* Mobile & Tablet: [logo | hamburger] */}
-          <div className="flex md:hidden justify-between items-center">
-            <SemanixLogo className="h-10 w-auto" theme="dark" />
+          {/* Mobile & Tablet: [hamburger | centered logo | hamburger space] */}
+          <div className="flex md:hidden justify-center items-center relative">
             <button 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 text-foreground/80 hover:text-primary transition-colors"
+              className="absolute left-0 p-2 text-foreground/80 hover:text-primary transition-colors"
               aria-label="Toggle mobile menu"
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
+            <SemanixLogo className="h-10 w-auto" theme="dark" />
           </div>
 
           {/* Desktop: [logo | center menu | CTA] */}
