@@ -127,9 +127,6 @@ const Index = () => {
               <button onClick={() => scrollToSection('services')} className="text-left text-foreground/80 hover:text-primary transition-colors text-sm font-medium py-2">Services</button>
               <button onClick={() => scrollToSection('clients')} className="text-left text-foreground/80 hover:text-primary transition-colors text-sm font-medium py-2">Clients</button>
               <button onClick={() => scrollToSection('contact')} className="text-left text-foreground/80 hover:text-primary transition-colors text-sm font-medium py-2">Contact</button>
-              <Button className="btn-primary w-full justify-center mt-2">
-                Start Project
-              </Button>
               <Button className="btn-primary w-full justify-center mt-2" onClick={openCalendly}>
                 Start Project
               </Button>
