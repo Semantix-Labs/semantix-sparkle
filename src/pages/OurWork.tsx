@@ -20,7 +20,11 @@ const OurWork: React.FC = () => {
     { id: 2, title: 'Reel 2', url: '/videos/reel2.mp4' },
     { id: 3, title: 'Reel 3', url: '/videos/reel3.mp4' },
     { id: 4, title: 'Reel 4', url: '/videos/reel4.mp4' },
-    { id: 5, title: 'Reel 5', url: '/videos/reel5.mp4' },
+    { id: 5, title: 'Reel 5', url: '/videos/KBC.mp4' },
+    { id: 6, title: 'Reel 6', url: '/videos/reel7.mp4' },
+    { id: 7, title: 'Reel 7', url: '/videos/RV1.mp4' },
+    { id: 8, title: 'Reel 8', url: '/videos/la_beirut.mp4' },
+    { id: 9, title: 'Reel 9', url: '/videos/Shanmugas.mp4' },
   ];
 
   const creativeCaptures = [
@@ -36,13 +40,16 @@ const OurWork: React.FC = () => {
     { id: 1, title: 'River View Villas', imageUrl: '/images/Riverview.png', description: 'An e-commerce platform for a fashion brand.' },
     { id: 2, title: 'PGTC', imageUrl: '/images/PGTC.png', description: 'A corporate website for a tech startup.' },
     { id: 3, title: 'Tabroscapes Tours', imageUrl: '/images/tabro.png', description: 'A portfolio website for a creative agency.' },
+    { id: 2, title: 'Mingle Box', imageUrl: '/images/PGTC.png', description: 'A corporate website for a tech startup.' },
+    { id: 3, title: 'Cuddles and Co', imageUrl: '/images/tabro.png', description: 'A portfolio website for a creative agency.' },
+    { id: 3, title: 'Olinda Galle', imageUrl: '/images/tabro.png', description: 'A portfolio website for a creative agency.' },
   ];
 
-  const brandingKits = [
-    { id: 1, title: 'Branding Kit 1', description: 'A complete branding kit for a modern tech company.', imageUrl: 'https://via.placeholder.com/800x600.png?text=Branding+Kit+1' },
-    { id: 2, title: 'Branding Kit 2', description: 'Elegant and minimalist branding for a fashion label.', imageUrl: 'https://via.placeholder.com/800x600.png?text=Branding+Kit+2' },
-    { id: 3, title: 'Branding Kit 3', description: 'Vibrant and playful branding for a new startup.', imageUrl: 'https://via.placeholder.com/800x600.png?text=Branding+Kit+3' },
-  ];
+  // const brandingKits = [
+  //   { id: 1, title: 'Branding Kit 1', description: 'A complete branding kit for a modern tech company.', imageUrl: 'https://via.placeholder.com/800x600.png?text=Branding+Kit+1' },
+  //   { id: 2, title: 'Branding Kit 2', description: 'Elegant and minimalist branding for a fashion label.', imageUrl: 'https://via.placeholder.com/800x600.png?text=Branding+Kit+2' },
+  //   { id: 3, title: 'Branding Kit 3', description: 'Vibrant and playful branding for a new startup.', imageUrl: 'https://via.placeholder.com/800x600.png?text=Branding+Kit+3' },
+  // ];
 
   return (
     <div className="min-h-screen bg-gradient-subtle">
@@ -183,7 +190,7 @@ const OurWork: React.FC = () => {
         </div>
       </section>
 
-      {/* Branding Kit Projects */}
+      {/* Branding Kit Projects
       <section id="branding" className="section bg-muted/30">
         <div className="container-custom">
           <div className="text-center mb-16">
@@ -203,7 +210,7 @@ const OurWork: React.FC = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Footer */}
       <footer className="bg-dark text-dark-foreground">
