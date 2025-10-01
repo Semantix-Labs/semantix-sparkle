@@ -40,9 +40,9 @@ const OurWork: React.FC = () => {
     { id: 1, title: 'River View Villas', imageUrl: '/images/Riverview.png', description: 'An e-commerce platform for a fashion brand.' },
     { id: 2, title: 'PGTC', imageUrl: '/images/PGTC.png', description: 'A corporate website for a tech startup.' },
     { id: 3, title: 'Tabroscapes Tours', imageUrl: '/images/tabro.png', description: 'A portfolio website for a creative agency.' },
-    { id: 2, title: 'Mingle Box', imageUrl: '/images/PGTC.png', description: 'A corporate website for a tech startup.' },
-    { id: 3, title: 'Cuddles and Co', imageUrl: '/images/tabro.png', description: 'A portfolio website for a creative agency.' },
-    { id: 3, title: 'Olinda Galle', imageUrl: '/images/tabro.png', description: 'A portfolio website for a creative agency.' },
+    { id: 2, title: 'Mingle Box', imageUrl: '/images/Mingle Box.png', description: 'A corporate website for a tech startup.' },
+    { id: 3, title: 'Cuddles and Co', imageUrl: '/images/Cuddles and co.png', description: 'A portfolio website for a creative agency.' },
+    { id: 3, title: 'Olinda Galle', imageUrl: '/images/Olinda Galle.png', description: 'A portfolio website for a creative agency.' },
   ];
 
   // const brandingKits = [
@@ -50,6 +50,15 @@ const OurWork: React.FC = () => {
   //   { id: 2, title: 'Branding Kit 2', description: 'Elegant and minimalist branding for a fashion label.', imageUrl: 'https://via.placeholder.com/800x600.png?text=Branding+Kit+2' },
   //   { id: 3, title: 'Branding Kit 3', description: 'Vibrant and playful branding for a new startup.', imageUrl: 'https://via.placeholder.com/800x600.png?text=Branding+Kit+3' },
   // ];
+
+  const openCalendly = () => {
+    if (window.Calendly) {
+      window.Calendly.initPopupWidget({ url: 'https://calendly.com/semantixlabs/30min' });
+    } else {
+      window.open('https://calendly.com/semantixlabs/30min', '_blank');
+    }
+  };
+
 
   return (
     <div className="min-h-screen bg-gradient-subtle">
@@ -70,10 +79,9 @@ const OurWork: React.FC = () => {
 
           {/* Desktop: [logo | center menu | CTA] */}
           <div className="hidden md:grid grid-cols-[auto,1fr,auto] items-center">
-            {/* Logo (left) */}
-            <SemanixLogo className="h-12 w-auto" theme="dark" />
-
-            {/* Menu (center) */}
+            <a href="/">
+              <SemanixLogo className="h-12 w-auto" theme="dark" />
+            </a>
             <div className="flex justify-center">
               <div className="flex items-center gap-6 lg:gap-8">
                 <a href="/" className="text-foreground/80 hover:text-primary transition-colors text-sm font-medium">Home</a>
@@ -86,7 +94,7 @@ const OurWork: React.FC = () => {
 
             {/* CTA (right) */}
             <div className="justify-self-end">
-              <Button size="sm" className="btn-primary px-4 py-2 text-sm" onClick={() => window.open('https://calendly.com/semantixlabs/30min', '_blank')}>
+              <Button size="sm" className="btn-primary px-4 py-2 text-sm" onClick={openCalendly}>
                 Start Project
               </Button>
             </div>
