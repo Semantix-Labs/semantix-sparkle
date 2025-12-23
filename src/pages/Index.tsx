@@ -4,12 +4,12 @@ import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { 
-  Code, 
-  Palette, 
-  MessageSquare, 
-  Camera, 
-  Users, 
+import {
+  Code,
+  Palette,
+  MessageSquare,
+  Camera,
+  Users,
   Search,
   Zap,
   Shield,
@@ -88,7 +88,7 @@ const Index = () => {
             <a href="/">
               <SemanixLogo className="h-10 w-auto" theme="dark" />
             </a>
-            <button 
+            <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="p-2 text-foreground/80 hover:text-primary transition-colors"
               aria-label="Toggle mobile menu"
@@ -104,11 +104,11 @@ const Index = () => {
             </a>
             <div className="flex justify-center">
               <div className="flex items-center gap-6 lg:gap-8">
-                <button onClick={() => scrollToSection('about')} className="text-foreground/80 hover:text-primary transition-colors text-sm font-medium">About</button>
-                <button onClick={() => scrollToSection('services')} className="text-foreground/80 hover:text-primary transition-colors text-sm font-medium">Services</button>
+                <a href="#about" onClick={(e) => { e.preventDefault(); scrollToSection('about'); }} className="text-foreground/80 hover:text-primary transition-colors text-sm font-medium">About</a>
+                <a href="#services" onClick={(e) => { e.preventDefault(); scrollToSection('services'); }} className="text-foreground/80 hover:text-primary transition-colors text-sm font-medium">Services</a>
                 <a href="/our-work" className="text-foreground/80 hover:text-primary transition-colors text-sm font-medium">Our Work</a>
-                <button onClick={() => scrollToSection('clients')} className="text-foreground/80 hover:text-primary transition-colors text-sm font-medium">Clients</button>
-                <button onClick={() => scrollToSection('contact')} className="text-foreground/80 hover:text-primary transition-colors text-sm font-medium">Contact</button>
+                <a href="#clients" onClick={(e) => { e.preventDefault(); scrollToSection('clients'); }} className="text-foreground/80 hover:text-primary transition-colors text-sm font-medium">Clients</a>
+                <a href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }} className="text-foreground/80 hover:text-primary transition-colors text-sm font-medium">Contact</a>
               </div>
             </div>
             <div className="justify-self-end">
@@ -123,11 +123,11 @@ const Index = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden mt-2 glass-card rounded-2xl p-4 shadow-elegant">
             <div className="flex flex-col space-y-3">
-              <button onClick={() => scrollToSection('about')} className="text-left text-foreground/80 hover:text-primary transition-colors text-sm font-medium py-2">About</button>
-              <button onClick={() => scrollToSection('services')} className="text-left text-foreground/80 hover:text-primary transition-colors text-sm font-medium py-2">Services</button>
+              <a href="#about" onClick={(e) => { e.preventDefault(); scrollToSection('about'); }} className="text-left text-foreground/80 hover:text-primary transition-colors text-sm font-medium py-2">About</a>
+              <a href="#services" onClick={(e) => { e.preventDefault(); scrollToSection('services'); }} className="text-left text-foreground/80 hover:text-primary transition-colors text-sm font-medium py-2">Services</a>
               <a href="/our-work" className="text-left text-foreground/80 hover:text-primary transition-colors text-sm font-medium py-2">Our Work</a>
-              <button onClick={() => scrollToSection('clients')} className="text-left text-foreground/80 hover:text-primary transition-colors text-sm font-medium py-2">Clients</button>
-              <button onClick={() => scrollToSection('contact')} className="text-left text-foreground/80 hover:text-primary transition-colors text-sm font-medium py-2">Contact</button>
+              <a href="#clients" onClick={(e) => { e.preventDefault(); scrollToSection('clients'); }} className="text-left text-foreground/80 hover:text-primary transition-colors text-sm font-medium py-2">Clients</a>
+              <a href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }} className="text-left text-foreground/80 hover:text-primary transition-colors text-sm font-medium py-2">Contact</a>
               <Button className="btn-primary w-full justify-center mt-2" onClick={openCalendly}>
                 Start Project
               </Button>
@@ -147,13 +147,13 @@ const Index = () => {
         {/* Content Container */}
         <div className="relative z-20 container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center min-h-[80vh]">
-            
+
             {/* Main Content - Left Side */}
             <div className="lg:col-span-7 text-center lg:text-left">
               <Badge className="mb-6 bg-primary/20 text-primary-glow border-primary/30 hover:bg-primary/30 transition-colors">
                 Sri Lankan Tech Excellence
               </Badge>
-              
+
               <h1 className="text-4xl lg:text-7xl xl:text-8xl font-bold mb-6 leading-tight text-white">
                 All in one
                 <br />
@@ -163,27 +163,27 @@ const Index = () => {
                 <br />
                 Agency
               </h1>
-              
+
               <p className="text-lg lg:text-xl text-gray-300 mb-4 leading-relaxed max-w-2xl mx-auto lg:mx-0">
                 People do not buy goods and services. They buy relations, stories, and magic.
               </p>
-              
+
               <p className="text-sm text-gray-400 mb-8 max-w-2xl mx-auto lg:mx-0">
                 - Seth Godin
               </p>
-              
+
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
                 <Button size="lg" className="btn-primary text-lg px-8 py-4" onClick={openCalendly}>
                   Start Your Project <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
-            
+
               </div>
-              
-              
+
+
             </div>
 
-            
+
           </div>
         </div>
 
@@ -224,20 +224,20 @@ const Index = () => {
               </div>
             </div>
             {/* Stats Grid */}
-              <div className="grid grid-cols-3 gap-6 text-center">
-                <div className="glass-card p-4 rounded-xl">
-                  <div className="text-3xl lg:text-4xl font-bold text-primary mb-2">50+</div>
-                  <div className="text-xs lg:text-sm gradient/80">Projects done</div>
-                </div>
-                <div className="glass-card p-4 rounded-xl">
-                  <div className="text-3xl lg:text-4xl font-bold text-primary mb-2">416%</div>
-                  <div className="text-xs lg:text-sm gradient/80">Facebook reach</div>
-                </div>
-                <div className="glass-card p-4 rounded-xl">
-                  <div className="text-3xl lg:text-4xl font-bold text-primary mb-2">100%</div>
-                  <div className="text-xs lg:text-sm gradient/80">Client satisfaction</div>
-                </div>
+            <div className="grid grid-cols-3 gap-6 text-center">
+              <div className="glass-card p-4 rounded-xl">
+                <div className="text-3xl lg:text-4xl font-bold text-primary mb-2">50+</div>
+                <div className="text-xs lg:text-sm gradient/80">Projects done</div>
               </div>
+              <div className="glass-card p-4 rounded-xl">
+                <div className="text-3xl lg:text-4xl font-bold text-primary mb-2">416%</div>
+                <div className="text-xs lg:text-sm gradient/80">Facebook reach</div>
+              </div>
+              <div className="glass-card p-4 rounded-xl">
+                <div className="text-3xl lg:text-4xl font-bold text-primary mb-2">100%</div>
+                <div className="text-xs lg:text-sm gradient/80">Client satisfaction</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -245,7 +245,7 @@ const Index = () => {
       {/* Our Features Section */}
       <section className="section relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-[#5856D6] to-[#00C9A7]"></div>
-        
+
         <div className="relative z-10 container-custom">
           <div className="text-center mb-16">
             <Badge className="mb-4 bg-white/20 text-white border-white/30">
@@ -255,7 +255,7 @@ const Index = () => {
               The unique qualities that make Semantix Labs special.
             </h2>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
@@ -315,13 +315,13 @@ const Index = () => {
         <div className="container-custom">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Our <span className="gradient-text">Services</span>
+              Our <span className="gradient-text">Web & Digital Services</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Comprehensive solutions to help your business thrive in the digital landscape
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
@@ -376,7 +376,7 @@ const Index = () => {
               <h2 className="text-4xl md:text-5xl font-bold mb-8 text-white leading-tight">
                 Grow business with creative ideas
               </h2>
-              
+
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
                   <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center mt-1 flex-shrink-0">
@@ -389,7 +389,7 @@ const Index = () => {
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start space-x-4">
                   <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center mt-1 flex-shrink-0">
                     <CheckCircle className="w-4 h-4 text-white" />
@@ -403,7 +403,7 @@ const Index = () => {
                 </div>
               </div>
             </div>
-            
+
             {/* Right Content */}
             <div className="text-center lg:text-right">
               <div className="mb-8">
@@ -428,7 +428,7 @@ const Index = () => {
               Our proven 4-step process ensures successful project delivery
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
@@ -437,13 +437,13 @@ const Index = () => {
                 description: "Understanding your goals, target audience, and unique requirements to set the foundation."
               },
               {
-                step: "02", 
+                step: "02",
                 title: "Design & Development",
                 description: "Crafting visually appealing designs and bringing them to life with robust coding."
               },
               {
                 step: "03",
-                title: "Testing & Deployment", 
+                title: "Testing & Deployment",
                 description: "Rigorous testing ensures functionality, security, and user-friendliness before launch."
               },
               {
@@ -476,7 +476,7 @@ const Index = () => {
               <h2 className="text-4xl md:text-5xl font-bold mb-8 text-white leading-tight">
                 Leading the best digital agency in Sri Lanka
               </h2>
-              
+
               <div className="space-y-4 mb-8">
                 <div className="flex items-center space-x-3">
                   <CheckCircle className="w-5 h-5 text-primary" />
@@ -491,14 +491,14 @@ const Index = () => {
                   <span className="text-white">Innovative ideas & solutions</span>
                 </div>
               </div>
-              
+
               {/* Progress Circles */}
               <div className="grid grid-cols-2 gap-8 mb-8">
                 <div className="text-center">
                   <div className="relative w-24 h-24 mx-auto mb-4">
                     <svg className="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
                       <circle cx="50" cy="50" r="40" stroke="rgba(255,255,255,0.2)" strokeWidth="8" fill="none" />
-                      <circle cx="50" cy="50" r="40" stroke="hsl(var(--primary))" strokeWidth="8" fill="none" 
+                      <circle cx="50" cy="50" r="40" stroke="hsl(var(--primary))" strokeWidth="8" fill="none"
                         strokeDasharray={`${2 * Math.PI * 40}`} strokeDashoffset={`${2 * Math.PI * 40 * (1 - 0.85)}`}
                         className="transition-all duration-1000" />
                     </svg>
@@ -508,12 +508,12 @@ const Index = () => {
                   </div>
                   <h4 className="font-semibold text-white">Company Growth</h4>
                 </div>
-                
+
                 <div className="text-center">
                   <div className="relative w-24 h-24 mx-auto mb-4">
                     <svg className="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
                       <circle cx="50" cy="50" r="40" stroke="rgba(255,255,255,0.2)" strokeWidth="8" fill="none" />
-                      <circle cx="50" cy="50" r="40" stroke="hsl(var(--primary))" strokeWidth="8" fill="none" 
+                      <circle cx="50" cy="50" r="40" stroke="hsl(var(--primary))" strokeWidth="8" fill="none"
                         strokeDasharray={`${2 * Math.PI * 40}`} strokeDashoffset={`${2 * Math.PI * 40 * (1 - 0.98)}`}
                         className="transition-all duration-1000" />
                     </svg>
@@ -525,7 +525,7 @@ const Index = () => {
                 </div>
               </div>
             </div>
-            
+
             {/* Right Content - FAQ */}
             <div className="space-y-4">
               {[
@@ -576,7 +576,7 @@ const Index = () => {
               We specialize in modern technologies to deliver cutting-edge solutions
             </p>
           </div>
-          
+
           <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-4 lg:gap-6 items-center justify-center">
             {[
               { name: "JavaScript", logo: javascriptLogo },
@@ -591,8 +591,8 @@ const Index = () => {
             ].map((tech, index) => (
               <div key={index} className="glass-card p-3 lg:p-4 rounded-lg hover-lift text-center group">
                 <div className="h-12 lg:h-16 flex items-center justify-center mb-2">
-                  <img 
-                    src={tech.logo} 
+                  <img
+                    src={tech.logo}
                     alt={`${tech.name} logo`}
                     className="max-h-full max-w-full object-contain group-hover:scale-110 transition-transform duration-300"
                   />
@@ -611,13 +611,13 @@ const Index = () => {
         <div className="container-custom">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Our <span className="gradient-text">Clients</span>
+              Our <span className="gradient-text">Trusted Clients</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Trusted by leading businesses across various industries
             </p>
           </div>
-          
+
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 lg:gap-8 items-center">
             {[
               { name: "Dinemore", logo: dinemoreLogo },
@@ -634,8 +634,8 @@ const Index = () => {
             ].map((client, index) => (
               <div key={index} className="glass-card p-4 lg:p-6 rounded-lg hover-lift text-center group">
                 <div className="h-16 lg:h-20 flex items-center justify-center mb-3">
-                  <img 
-                    src={client.logo} 
+                  <img
+                    src={client.logo}
                     alt={`${client.name} logo`}
                     className="max-h-full max-w-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300 group-hover:scale-110"
                   />
@@ -660,7 +660,7 @@ const Index = () => {
               Ready to start your next project? Get in touch with our team today.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div className="space-y-8">
               <div className="glass-card p-6 rounded-xl">
