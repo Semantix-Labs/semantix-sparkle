@@ -70,41 +70,49 @@ const Index = () => {
     setIsMobileMenuOpen(false);
   };
 
+  // Calendly popup handler
+  const openCalendly = () => {
+    if (window.Calendly) {
+      window.Calendly.initPopupWidget({ url: 'https://calendly.com/semantixlabs/30min' });
+    } else {
+      window.open('https://calendly.com/semantixlabs/30min', '_blank');
+    }
+  };
   return (
     <div className="min-h-screen bg-gradient-subtle">
       {/* Floating Navigation */}
       <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95vw] sm:w-[85vw] md:w-[80vw] lg:w-[70vw] xl:w-[60vw] max-w-6xl">
         <div className="glass-card rounded-full shadow-elegant px-4 sm:px-6 md:px-8 py-3">
-          {/* Mobile & Tablet: [hamburger | centered logo | hamburger space] */}
-          <div className="flex md:hidden justify-center items-center relative">
+          {/* Mobile & Tablet */}
+          <div className="flex md:hidden justify-between items-center">
+            <a href="/">
+              <SemanixLogo className="h-10 w-auto" theme="dark" />
+            </a>
             <button 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="absolute left-0 p-2 text-foreground/80 hover:text-primary transition-colors"
+              className="p-2 text-foreground/80 hover:text-primary transition-colors"
               aria-label="Toggle mobile menu"
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
-            <SemanixLogo className="h-10 w-auto" theme="dark" />
           </div>
 
-          {/* Desktop: [logo | center menu | CTA] */}
+          {/* Desktop */}
           <div className="hidden md:grid grid-cols-[auto,1fr,auto] items-center">
-            {/* Logo (left) */}
-            <SemanixLogo className="h-12 w-auto" theme="dark" />
-
-            {/* Menu (center) */}
+            <a href="/">
+              <SemanixLogo className="h-12 w-auto" theme="dark" />
+            </a>
             <div className="flex justify-center">
               <div className="flex items-center gap-6 lg:gap-8">
                 <button onClick={() => scrollToSection('about')} className="text-foreground/80 hover:text-primary transition-colors text-sm font-medium">About</button>
                 <button onClick={() => scrollToSection('services')} className="text-foreground/80 hover:text-primary transition-colors text-sm font-medium">Services</button>
+                <a href="/our-work" className="text-foreground/80 hover:text-primary transition-colors text-sm font-medium">Our Work</a>
                 <button onClick={() => scrollToSection('clients')} className="text-foreground/80 hover:text-primary transition-colors text-sm font-medium">Clients</button>
                 <button onClick={() => scrollToSection('contact')} className="text-foreground/80 hover:text-primary transition-colors text-sm font-medium">Contact</button>
               </div>
             </div>
-
-            {/* CTA (right) */}
             <div className="justify-self-end">
-              <Button size="sm" className="btn-primary px-4 py-2 text-sm">
+              <Button size="sm" className="btn-primary px-4 py-2 text-sm" onClick={openCalendly}>
                 Start Project
               </Button>
             </div>
@@ -117,9 +125,10 @@ const Index = () => {
             <div className="flex flex-col space-y-3">
               <button onClick={() => scrollToSection('about')} className="text-left text-foreground/80 hover:text-primary transition-colors text-sm font-medium py-2">About</button>
               <button onClick={() => scrollToSection('services')} className="text-left text-foreground/80 hover:text-primary transition-colors text-sm font-medium py-2">Services</button>
+              <a href="/our-work" className="text-left text-foreground/80 hover:text-primary transition-colors text-sm font-medium py-2">Our Work</a>
               <button onClick={() => scrollToSection('clients')} className="text-left text-foreground/80 hover:text-primary transition-colors text-sm font-medium py-2">Clients</button>
               <button onClick={() => scrollToSection('contact')} className="text-left text-foreground/80 hover:text-primary transition-colors text-sm font-medium py-2">Contact</button>
-              <Button className="btn-primary w-full justify-center mt-2">
+              <Button className="btn-primary w-full justify-center mt-2" onClick={openCalendly}>
                 Start Project
               </Button>
             </div>
@@ -165,7 +174,7 @@ const Index = () => {
               
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
-                <Button size="lg" className="btn-primary text-lg px-8 py-4">
+                <Button size="lg" className="btn-primary text-lg px-8 py-4" onClick={openCalendly}>
                   Start Your Project <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
             

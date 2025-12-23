@@ -10,9 +10,9 @@ import emailjs from '@emailjs/browser';
 import { useToast } from '@/hooks/use-toast';
 import { contactFormSchema, type ContactFormData } from '@/lib/validations';
 
-const EMAILJS_SERVICE_ID = 'service_ax6b0em';
-const EMAILJS_TEMPLATE_ID = 'template_p33g5sj';
-const EMAILJS_PUBLIC_KEY = 'lPMS-HjD0ycHAuwSH';
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 export const ContactForm = () => {
   const { toast } = useToast();
