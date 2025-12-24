@@ -47,6 +47,7 @@ import mingleBoxLogo from '@/assets/Semantix Client Logos/Semantix labs Client -
 import onBoardTradingLogo from '@/assets/Semantix Client Logos/Semantix labs Client - On Board Trading Qatar.png';
 import rfDesignsLogo from '@/assets/Semantix Client Logos/Semantix labs Client - RF Designs.png';
 import riverViewLogo from '@/assets/Semantix Client Logos/Semantix labs Client - River View Villlas.png';
+import bilalLogo from '@/assets/Semantix Client Logos/Semantix labs Client - Bilal.png';
 
 // Tech Stack Logos
 import figmaLogo from '@/assets/Tech Stack Logos/Semantix labs Tech product - Figma.png';
@@ -631,7 +632,8 @@ const Index = () => {
               { name: "River View Villas", logo: riverViewLogo },
               { name: "Bamba 325", logo: bambaLogo },
               { name: "Cuddles & Co", logo: cuddlesLogo },
-              { name: "RF Designs", logo: rfDesignsLogo }
+              { name: "RF Designs", logo: rfDesignsLogo },
+              { name: "Bilal - Indian Taste Trail", logo: bilalLogo }
             ].map((client, index) => (
               <div key={index} className="glass-card p-4 lg:p-6 rounded-lg hover-lift text-center group">
                 <div className="h-16 lg:h-20 flex items-center justify-center mb-3">
