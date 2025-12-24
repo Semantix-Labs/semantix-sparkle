@@ -33,6 +33,7 @@ import {
 } from 'lucide-react';
 import SemanixLogo from '@/components/SemanixLogo';
 import { ContactForm } from '@/components/ContactForm';
+import Footer from '@/components/Footer';
 
 // Client Logos
 import bambaLogo from '@/assets/Semantix Client Logos/Semantix labs Client - Bamba 325.png';
@@ -714,24 +715,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-dark text-dark-foreground">
-        <div className="container-custom py-12">
-          <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="flex items-center mb-4 md:mb-0">
-              <SemanixLogo className="h-8 w-auto" theme="light" />
-            </div>
-            <div className="text-center md:text-right">
-              <div className="text-sm  mb-2">
-                www.semantixlabs.com
-              </div>
-              <div className="text-sm ">
-                © 2026 Semantix Labs. All rights reserved.
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

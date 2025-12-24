@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { ArrowRight, Monitor, Palette, Menu, X, Camera } from 'lucide-react';
 import SemanixLogo from '@/components/SemanixLogo';
+import Footer from '@/components/Footer';
 
 const OurWork: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
@@ -68,7 +69,7 @@ const OurWork: React.FC = () => {
           {/* Mobile & Tablet: [logo | hamburger] */}
           <div className="flex md:hidden justify-between items-center">
             <SemanixLogo className="h-10 w-auto" theme="dark" />
-            <button 
+            <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="p-2 text-foreground/80 hover:text-primary transition-colors"
               aria-label="Toggle mobile menu"
@@ -105,11 +106,11 @@ const OurWork: React.FC = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden mt-2 glass-card rounded-2xl p-4 shadow-elegant">
             <div className="flex flex-col space-y-3">
-                <a href="/" className="text-left text-foreground/80 hover:text-primary transition-colors text-sm font-medium py-2">Home</a>
-                <button onClick={() => scrollToSection('reels')} className="text-left text-foreground/80 hover:text-primary transition-colors text-sm font-medium py-2">Reels</button>
-                <button onClick={() => scrollToSection('captures')} className="text-left text-foreground/80 hover:text-primary transition-colors text-sm font-medium py-2">Photography</button>
-                <button onClick={() => scrollToSection('websites')} className="text-left text-foreground/80 hover:text-primary transition-colors text-sm font-medium py-2">Websites</button>
-                <button onClick={() => scrollToSection('branding')} className="text-left text-foreground/80 hover:text-primary transition-colors text-sm font-medium py-2">Branding</button>
+              <a href="/" className="text-left text-foreground/80 hover:text-primary transition-colors text-sm font-medium py-2">Home</a>
+              <button onClick={() => scrollToSection('reels')} className="text-left text-foreground/80 hover:text-primary transition-colors text-sm font-medium py-2">Reels</button>
+              <button onClick={() => scrollToSection('captures')} className="text-left text-foreground/80 hover:text-primary transition-colors text-sm font-medium py-2">Photography</button>
+              <button onClick={() => scrollToSection('websites')} className="text-left text-foreground/80 hover:text-primary transition-colors text-sm font-medium py-2">Websites</button>
+              <button onClick={() => scrollToSection('branding')} className="text-left text-foreground/80 hover:text-primary transition-colors text-sm font-medium py-2">Branding</button>
               <Button className="btn-primary w-full justify-center mt-2" onClick={() => window.open('https://calendly.com/semantixlabs/30min', '_blank')}>
                 Start Project
               </Button>
@@ -220,24 +221,7 @@ const OurWork: React.FC = () => {
         </div>
       </section> */}
 
-      {/* Footer */}
-      <footer className="bg-dark text-dark-foreground">
-        <div className="container-custom py-12">
-          <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="flex items-center mb-4 md:mb-0">
-              <SemanixLogo className="h-8 w-auto" theme="light" />
-            </div>
-            <div className="text-center md:text-right">
-              <div className="text-sm  mb-2">
-                www.semantixlabs.com
-              </div>
-              <div className="text-sm ">
-                © 2026 Semantix Labs. All rights reserved.
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
