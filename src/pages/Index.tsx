@@ -61,8 +61,28 @@ import javascriptLogo from '@/assets/Tech Stack Logos/Semantix labs Tech product
 import wordpressLogo from '@/assets/Tech Stack Logos/Semantix labs Tech product -Wordpress.png';
 import techLogo10 from '@/assets/Tech Stack Logos/10.png';
 
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  type CarouselApi,
+} from "@/components/ui/carousel";
+
 const Index = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const [api, setApi] = React.useState<CarouselApi>();
+
+  React.useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    const intervalId = setInterval(() => {
+      api.scrollNext();
+    }, 2000);
+
+    return () => clearInterval(intervalId);
+  }, [api]);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -579,32 +599,43 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-4 lg:gap-6 items-center justify-center">
-            {[
-              { name: "JavaScript", logo: javascriptLogo },
-              { name: "React", logo: reactLogo },
-              { name: "Next.js", logo: nextJsLogo },
-              { name: "Figma", logo: figmaLogo },
-              { name: "Meta", logo: metaLogo },
-              { name: "WordPress", logo: wordpressLogo },
-              { name: "Azure", logo: azureLogo },
-              { name: "Google Cloud", logo: gcpLogo },
-              { name: "Google Ads", logo: googleAdsLogo }
-            ].map((tech, index) => (
-              <div key={index} className="glass-card p-3 lg:p-4 rounded-lg hover-lift text-center group">
-                <div className="h-12 lg:h-16 flex items-center justify-center mb-2">
-                  <img
-                    src={tech.logo}
-                    alt={`${tech.name} logo`}
-                    className="max-h-full max-w-full object-contain group-hover:scale-110 transition-transform duration-300"
-                  />
-                </div>
-                <div className="text-xs lg:text-sm font-medium text-foreground/80 group-hover:text-foreground transition-colors">
-                  {tech.name}
-                </div>
-              </div>
-            ))}
-          </div>
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            setApi={setApi}
+            className="w-full"
+          >
+            <CarouselContent className="py-8 px-[15px]">
+              {[
+                { name: "JavaScript", logo: javascriptLogo },
+                { name: "React", logo: reactLogo },
+                { name: "Next.js", logo: nextJsLogo },
+                { name: "Figma", logo: figmaLogo },
+                { name: "Meta", logo: metaLogo },
+                { name: "WordPress", logo: wordpressLogo },
+                { name: "Azure", logo: azureLogo },
+                { name: "Google Cloud", logo: gcpLogo },
+                { name: "Google Ads", logo: googleAdsLogo }
+              ].map((tech, index) => (
+                <CarouselItem key={index} className="pl-2 md:pl-4 basis-1/3 md:basis-1/5 lg:basis-1/7">
+                  <div className="glass-card p-3 lg:p-4 rounded-lg hover-lift text-center group h-full flex flex-col justify-center">
+                    <div className="h-12 lg:h-16 flex items-center justify-center mb-2">
+                      <img
+                        src={tech.logo}
+                        alt={`${tech.name} logo`}
+                        className="max-h-full max-w-full object-contain group-hover:scale-110 transition-transform duration-300"
+                      />
+                    </div>
+                    <div className="text-xs lg:text-sm font-medium text-foreground/80 group-hover:text-foreground transition-colors">
+                      {tech.name}
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
         </div>
       </section>
 
